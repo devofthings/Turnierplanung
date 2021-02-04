@@ -1,10 +1,24 @@
 ﻿using System;
-namespace Turnierplanung.Models.Spieler
+namespace Turnierplanung
 {
-    public class Tennisspieler
+    public class Tennisspieler : Spieler
     {
-        public Tennisspieler()
+        #region Attribute
+        private bool _z;
+        #endregion
+
+        #region Propertys
+        public bool Z { get => _z; set => _z = value; }
+        #endregion
+
+        #region Konstruktoren
+        public Tennisspieler() : base()
         {
+
         }
+        #endregion
+
+        #region Worker
+        #endregion
     }
 }

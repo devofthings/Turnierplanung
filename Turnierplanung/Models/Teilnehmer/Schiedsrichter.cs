@@ -1,10 +1,24 @@
 ﻿using System;
-namespace Turnierplanung.Models
+namespace Turnierplanung
 {
-    public class Schiedsrichter
+    public class Schiedsrichter : Teilnehmer
     {
-        public Schiedsrichter()
+        #region Attribute
+        private bool _z;
+        #endregion
+
+        #region Propertys
+        public bool Z { get => _z; set => _z = value; }
+        #endregion
+
+        #region Konstruktoren
+        public Schiedsrichter() : base()
         {
+
         }
+        #endregion
+
+        #region Worker
+        #endregion
     }
 }
