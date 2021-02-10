@@ -30,8 +30,23 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\Spieler\Fussballspieler.cs" />
+    <Compile Include="Models\Spieler\Handballspieler.cs" />
+    <Compile Include="Models\Spieler\Tennisspieler.cs" />
+    <Compile Include="Models\Teilnehmer\Physiologe.cs" />
+    <Compile Include="Models\Teilnehmer\Schiedsrichter.cs" />
+    <Compile Include="Models\Teilnehmer\Trainer.cs" />
+    <Compile Include="Models\Teilnehmer\WeitereAufgaben.cs" />
+    <Compile Include="Models\Teilnehmer\Zeugwart.cs" />
+    <Compile Include="Models\Spieler.cs" />
+    <Compile Include="Models\Teilnehmer.cs" />
+    <Compile Include="Controller\Controller.cs" />
+    <Compile Include="main.cs" />
+    <Compile Include="View\View.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
