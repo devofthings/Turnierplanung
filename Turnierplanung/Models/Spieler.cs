@@ -1,36 +1,35 @@
 ﻿using System;
 namespace Turnierplanung
 {
-    public class Spieler :Teilnehmer
+    public abstract class Spieler :Teilnehmer
     {
         #region Attribute
-        private string _name;
+        private string _status; // Gesund oder Verletzt
         private View _view;
         #endregion
 
         #region Propertys
-        public string Name { get => _name; set => _name = value; }
+        public string Status { get => _status; set => _status = value; }
         public View View { get => _view; set => _view = value; }
         #endregion
 
         #region Konstruktoren
         public Spieler() :base()
         {
-            Name = "Max Mustermann";
+            Status = "Gesund";
         }
 
-        public Spieler(string name) : base()
+        public Spieler(string name, int alter, string beruf, string status) : base()
         {
             Name = name;
+            Alter = alter;
+            Beruf = beruf;
+            Status = status;
         }
         #endregion
 
         #region Worker
-        public string sageName()
-        {
-            View.leseTextEin($"Hallo, mein Name ist {Name}.");
-            return View.gebeTextAus();
-        }
+        public override abstract void StellDichVor();
         #endregion
     }
 }

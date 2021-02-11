@@ -44,6 +44,7 @@
     <Compile Include="Controller\Controller.cs" />
     <Compile Include="main.cs" />
     <Compile Include="View\View.cs" />
+    <Compile Include="Models\Mannschaft.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
