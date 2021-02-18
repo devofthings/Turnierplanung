@@ -61,13 +61,6 @@ namespace Turnierplanung
             Kader.Remove(FindeSpieler(name));
             return tmp;
         }
-        public void TransferiereSpielerZwischenMannschaften(string name, Spieler neuerSpieler, Mannschaft neueMannschaft)
-        {
-            Spieler tmp = FindeSpieler(name);
-            Kader.Remove(FindeSpieler(name));
-            Kader.Add(neuerSpieler);
-            neueMannschaft.FuegeSpielerZuMannschaftHinzu(tmp);
-        }
         public void GebeGroesseDesKadersAus()
         {
             View.leseTextEin($"Wir haben {Kader.Count} Spieler in unserer Mannschaft.");
