@@ -28,6 +28,8 @@ namespace Turnierplanung
 
         #region Worker
         public abstract void StellDichVor();
+
+        public abstract void InDatenbankSpeichern();
         #endregion
     }
 }

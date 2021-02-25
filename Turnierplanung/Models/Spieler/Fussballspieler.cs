@@ -1,4 +1,6 @@
-﻿namespace Turnierplanung
+﻿using MySql.Data.MySqlClient;
+
+namespace Turnierplanung
 {
     public class Fussballspieler : Spieler
     {
@@ -51,6 +53,13 @@
         {
             View.leseTextEin($"Aktuell bin ich {Status}.");
             View.gebeTextAus();
+        }
+
+        public override void InDatenbankSpeichern()
+        {
+            MySqlConnection Connection = new MySqlConnection("Server=127.0.0.1;Database=tournament;User Id=root;Password=;");
+            string SQLcommand = "select surname, name, job from paticipants" +
+                "inner join jobs on participant.job_id = jobs.id";
         }
         #endregion
     }
