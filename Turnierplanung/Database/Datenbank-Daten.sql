@@ -7,4 +7,4 @@ VALUES('Fußballspieler'), ('Tennisspieler'), ('Handballspieler'), ('Trainer'), 
 INSERT INTO team (name) 
 VALUES ('Borussia Dortmund'), ('Test');
 
-INSERT INTO player (active, participant_id, team_id, job_id) VALUES (1, 1, 2, 5), (1, 2, 1, 1), (1, 3, 2, 1), (1, 4, 1, 1), (1, 5, 1, 2), (1, 0, 1, 2);
+INSERT INTO player (active, participant_id, team_id, job_id) VALUES (1, 1, 2), (1, 2, 1), (1, 3, 2), (1, 4, 1), (1, 5, 1), (1, 0, 1);
