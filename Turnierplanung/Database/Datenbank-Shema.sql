@@ -17,7 +17,7 @@ CREATE TABLE `tournament`.`participant` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NULL DEFAULT NULL,
     `surname` VARCHAR(50) NULL DEFAULT NULL,
-    `age` INT(3) NULL DEFAULT NULL,
+    `age` DATE NULL DEFAULT NULL,
     `job_id` INT(11) NULL DEFAULT NULL,
     INDEX `fk_participant_job` (`job_id`),
     CONSTRAINT `fk_participant_job` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`),

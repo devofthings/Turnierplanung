@@ -99,9 +99,12 @@
     <Folder Include="Database\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Database\Datenbank-Daten.sql" />
+    <None Include="Database\Player-Data.sql" />
     <None Include="Database\Datenbank-Shema.sql" />
     <None Include="packages.config" />
+    <None Include="Database\Participant-Data.sql" />
+    <None Include="Database\Teams-Data.sql" />
+    <None Include="Database\Jobs-Data.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
