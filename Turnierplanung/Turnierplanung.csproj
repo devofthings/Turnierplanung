@@ -93,6 +93,7 @@
     <Compile Include="main.cs" />
     <Compile Include="View\View.cs" />
     <Compile Include="Models\Mannschaft.cs" />
+    <Compile Include="Database\Datenbank.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />

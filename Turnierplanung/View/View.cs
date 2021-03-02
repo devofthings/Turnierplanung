@@ -24,15 +24,20 @@ namespace Turnierplanung
         #endregion
 
         #region Worker
-        public void leseTextEin(string text)
+        public void LeseTextEin(string text)
         {
             Text = text;
         }
 
-        public string gebeTextAus()
+        public string GebeTextAus()
         {
             Console.WriteLine(Text);
             return Text;
+        }
+
+        public void GebeTextDirektAus(string text)
+        {
+            Console.WriteLine(text);
         }
         #endregion
     }

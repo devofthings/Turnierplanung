@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System;
+using MySql.Data.MySqlClient;
 
 namespace Turnierplanung
 {
@@ -7,13 +8,13 @@ namespace Turnierplanung
         #region Attribute
         private string _rueckennummer;
         private string _beruf;
-        private View view;
+        private View _view;
         #endregion
 
         #region Propertys
         public string Rueckennummer { get => _rueckennummer; set => _rueckennummer = value; }
         public string Beruf { get => _beruf; set => _beruf = value; }
-        public View View { get => view; set => view = value; }
+        public View View { get => _view; set => _view = value; }
         #endregion
 
         #region Konstruktoren
@@ -39,27 +40,27 @@ namespace Turnierplanung
         #region Worker
         public void spielDenBall()
         {
-            View.leseTextEin($"Der Spieler mit der Rückennummer {Rueckennummer} hat den Ball.");
-            View.gebeTextAus();
+            View.LeseTextEin($"Der Spieler mit der Rückennummer {Rueckennummer} hat den Ball.");
+            View.GebeTextAus();
         }
 
         public override void StellDichVor()
         {
-            View.leseTextEin($"Mein Name ist {Name} ich bin {Beruf}.");
-            View.gebeTextAus();
+            View.LeseTextEin($"Mein Name ist {Name} ich bin {Beruf}.");
+            View.GebeTextAus();
         }
 
         public override void GebeGesundheitsStatusAus()
         {
-            View.leseTextEin($"Aktuell bin ich {Status}.");
-            View.gebeTextAus();
+            View.LeseTextEin($"Aktuell bin ich {Status}.");
+            View.GebeTextAus();
         }
 
-        public override void InDatenbankSpeichern()
+        public override void InDatenbankSpeichern(Datenbank DB)
         {
-            MySqlConnection Connection = new MySqlConnection("Server=127.0.0.1;Database=tournament;User Id=root;Password=;");
-            string SQLcommand = "select surname, name, job from paticipants" +
-                "inner join jobs on participant.job_id = jobs.id";
+            DB.FuehreQueryAus("SELECT * FROM participant");
+            DB.FuehreNonQueryAus($"INSERT INTO participant (name, surname, job_id) VALUES ('Marco', 'Reus', 1)");
+            DB.FuehreQueryAus("SELECT * FROM participant");
         }
         #endregion
     }

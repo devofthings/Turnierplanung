@@ -11,12 +11,14 @@ namespace Turnierplanung
         private List<Teilnehmer> _teilnehmer;
         private Mannschaft _m1;
         private Mannschaft _m2;
+        private Datenbank _db;
         #endregion
 
         #region Propertys
         public List<Teilnehmer> Teilnehmer { get => _teilnehmer; set => _teilnehmer = value; }
         public Mannschaft M1 { get => _m1; set => _m1 = value; }
         public Mannschaft M2 { get => _m2; set => _m2 = value; }
+        public Datenbank DB { get => _db; set => _db = value; }
         #endregion
 
         #region Konstruktoren
@@ -25,12 +27,14 @@ namespace Turnierplanung
             Teilnehmer = new List<Teilnehmer>();
             M1 = new Mannschaft("AWE Kickers 2020", 1);
             M2 = new Mannschaft();
+            DB = new Datenbank("192.168.64.2", "tournament", "root", "");
         }
         public Controller(List<Teilnehmer> t)
         {
             Teilnehmer = t;
             M1 = new Mannschaft("AWE Kickers 2020", 1);
             M2 = new Mannschaft();
+            DB = new Datenbank("192.168.64.2", "tournament", "root", "");
         }
         public Controller(List<Teilnehmer> t, string mannschaft1, string mannschaft2)
         {
@@ -43,7 +47,8 @@ namespace Turnierplanung
         #region Worker
         public void Run()
         {
-            #region Teilnehmer Anlegen
+            Teilnehmer.Add(new Fussballspieler("Marco Reus", 30, "Gesund", "11"));
+            /** #region Teilnehmer Anlegen
             Teilnehmer.Add(new Fussballspieler("Marco Reus", 30, "Gesund", "11"));
             Teilnehmer.Add(new Fussballspieler("Spieler2", 16, "Gesund", "10"));
             Teilnehmer.Add(new Fussballspieler("Spieler3", 18, "Verletzt", "09"));
@@ -77,7 +82,8 @@ namespace Turnierplanung
             M1.GebeGroesseDesKadersAus();
             entlassen.StellDichVor();
             #endregion
-
+            **/
+            Teilnehmer[0].InDatenbankSpeichern(DB);
             Console.ReadKey();
         }
         #endregion

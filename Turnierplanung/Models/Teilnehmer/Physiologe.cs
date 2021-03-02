@@ -1,4 +1,7 @@
-﻿namespace Turnierplanung
+﻿using System;
+using MySql.Data.MySqlClient;
+
+namespace Turnierplanung
 {
     public class Physiologe : Teilnehmer
     {
@@ -33,14 +36,19 @@
         #region Worker
         public void BaueMannschaftAuf()
         {
-            View.leseTextEin($"{Name} versucht die Gesundheit der mannschaft zu verbessern.");
-            View.gebeTextAus();
+            View.LeseTextEin($"{Name} versucht die Gesundheit der mannschaft zu verbessern.");
+            View.GebeTextAus();
         }
 
         public override void StellDichVor()
         {
-            View.leseTextEin($"Ich bin Physiologe und mein Name ist {Name}.");
-            View.gebeTextAus();
+            View.LeseTextEin($"Ich bin Physiologe und mein Name ist {Name}.");
+            View.GebeTextAus();
+        }
+
+        public override void InDatenbankSpeichern(Datenbank DB)
+        {
+            DB.FuehreQueryAus("SELECT * FROM participant");
         }
         #endregion
     }

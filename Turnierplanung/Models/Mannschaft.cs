@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 
 namespace Turnierplanung
 {
@@ -63,14 +65,19 @@ namespace Turnierplanung
         }
         public void GebeGroesseDesKadersAus()
         {
-            View.leseTextEin($"Wir haben {Kader.Count} Spieler in unserer Mannschaft.");
-            View.gebeTextAus();
+            View.LeseTextEin($"Wir haben {Kader.Count} Spieler in unserer Mannschaft.");
+            View.GebeTextAus();
         }
 
         public override void StellDichVor()
         {
-            View.leseTextEin($"Wir sind die Mannschaft: '{Name}'!");
-            View.gebeTextAus();
+            View.LeseTextEin($"Wir sind die Mannschaft: '{Name}'!");
+            View.GebeTextAus();
+        }
+
+        public override void InDatenbankSpeichern(Datenbank DB)
+        {
+            DB.FuehreQueryAus("SELECT * FROM participant");
         }
         #endregion
     }

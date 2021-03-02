@@ -1,4 +1,7 @@
-﻿namespace Turnierplanung
+﻿using System;
+using MySql.Data.MySqlClient;
+
+namespace Turnierplanung
 {
     public class Zeugwart : Teilnehmer
     {
@@ -33,15 +36,20 @@
         #region Worker
         public void OrganisiereZeug()
         {
-            View.leseTextEin($"{Name} räumt die Bälle weg.");
-            View.gebeTextAus();
+            View.LeseTextEin($"{Name} räumt die Bälle weg.");
+            View.GebeTextAus();
         }
 
         public override void StellDichVor()
         {
-            View.leseTextEin($"Ich bin Zeugwart und mein Name ist {Name}.");
-            View.gebeTextAus();
+            View.LeseTextEin($"Ich bin Zeugwart und mein Name ist {Name}.");
+            View.GebeTextAus();
         }
+
+        public override void InDatenbankSpeichern(Datenbank DB)
+        {
+            DB.FuehreQueryAus("SELECT * FROM participant");
+        }
+        #endregion
     }
-    #endregion
 }

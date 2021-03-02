@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Controller controller = new Controller();
+            Controller Controller = new Controller();
 
-            controller.Run();
+            Controller.Run();
         }
     }
 }
