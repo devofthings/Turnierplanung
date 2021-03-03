@@ -77,7 +77,7 @@ namespace Turnierplanung
 
         public override void InDatenbankSpeichern(Datenbank DB)
         {
-            DB.FuehreQueryAus("SELECT * FROM participant");
+            DB.GebeTeilnehmerAus();
         }
         #endregion
     }

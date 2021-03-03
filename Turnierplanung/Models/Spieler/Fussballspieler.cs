@@ -58,9 +58,9 @@ namespace Turnierplanung
 
         public override void InDatenbankSpeichern(Datenbank DB)
         {
-            DB.FuehreQueryAus("SELECT * FROM participant");
-            DB.FuehreNonQueryAus($"INSERT INTO participant (name, surname, job_id) VALUES ('Marco', 'Reus', 1)");
-            DB.FuehreQueryAus("SELECT * FROM participant");
+            DB.GebeTeilnehmerAus();
+            DB.FuegeTeilnehmerHinzu("Hans", "Schneider", "1990-01-01", 1);
+            DB.GebeTeilnehmerAus();
         }
         #endregion
     }
