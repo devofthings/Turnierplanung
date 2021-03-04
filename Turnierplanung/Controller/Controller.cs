@@ -35,8 +35,19 @@ namespace Turnierplanung
 
         #endregion
         #region Worker
-
-        
+        public bool TeilnehmerHinzufügen(Teilnehmer t)
+        {
+            try
+            {
+                DB.FuegeTeilnehmerHinzu(t.Name, t.Nachname, t.Alter, t.GebeJobIdAus(t.Beruf));
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+            
         }
         #endregion
     }

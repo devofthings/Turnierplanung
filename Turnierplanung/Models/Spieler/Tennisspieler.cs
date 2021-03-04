@@ -3,12 +3,10 @@
     public class Tennisspieler : Spieler
     {
         #region Attribute
-        private string _beruf;
         private View _view;
         #endregion
 
         #region Propertys
-        public string Beruf { get => _beruf; set => _beruf = value; }
         public View View { get => _view; set => _view = value; }
         #endregion
 

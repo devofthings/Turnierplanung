@@ -4,13 +4,11 @@
     {
         #region Attribute
         private string _rueckennummer;
-        private string _beruf;
         private View _view;
         #endregion
 
         #region Propertys
         public string Rueckennummer { get => _rueckennummer; set => _rueckennummer = value; }
-        public string Beruf { get => _beruf; set => _beruf = value; }
         public View View { get => _view; set => _view = value; }
         #endregion
 

@@ -6,12 +6,10 @@ namespace Turnierplanung
     public class Zeugwart : Teilnehmer
     {
         #region Attribute
-        private string _beruf;
         private View view;
         #endregion
 
         #region Propertys
-        public string Beruf { get => _beruf; set => _beruf = value; }
         public View View { get => view; set => view = value; }
         #endregion
 
