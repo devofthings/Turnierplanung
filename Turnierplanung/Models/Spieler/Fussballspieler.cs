@@ -1,7 +1,4 @@
-﻿using System;
-using MySql.Data.MySqlClient;
-
-namespace Turnierplanung
+﻿namespace Turnierplanung
 {
     public class Fussballspieler : Spieler
     {
@@ -20,16 +17,18 @@ namespace Turnierplanung
         #region Konstruktoren
         public Fussballspieler() : base()
         {
-            Name = "Max Mustermann";
-            Alter = 0;
+            Name = "Max";
+            Nachname = "Mustermann";
+            Alter = "1900-01-01";
             Beruf = "Fußballspieler";
             Rueckennummer = "0";
             View = new View();
         }
 
-        public Fussballspieler(string name, int alter, string status, string rueckennummer) : base(name, alter, status)
+        public Fussballspieler(string name, string nachname, string alter, string status, string rueckennummer) : base(name, nachname, alter, status)
         {
             Name = name;
+            Nachname = nachname;
             Alter = alter;
             Beruf = "Fußballspieler";
             Rueckennummer = rueckennummer;
@@ -56,11 +55,19 @@ namespace Turnierplanung
             View.GebeTextAus();
         }
 
-        public override void InDatenbankSpeichern(Datenbank DB)
+        public override bool InDatenbankSpeichern(Datenbank db)
         {
-            DB.GebeTeilnehmerAus();
-            DB.FuegeTeilnehmerHinzu("Hans", "Schneider", "1990-01-01", 1);
-            DB.GebeTeilnehmerAus();
+            return db.FuegeTeilnehmerHinzu("Hans", "Schneider", "1990-01-01", 1);
+        }
+
+        public override bool InDatenbankAendern(Datenbank db)
+        {
+            return db.AendereTeilnehmer(1, "Test", "Lauf");
+        }
+
+        public override bool InDatenbankLoeschen(Datenbank db)
+        {
+            return db.LoescheTeilnehmer(1);
         }
         #endregion
     }

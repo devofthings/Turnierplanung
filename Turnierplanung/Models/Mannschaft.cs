@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+﻿using System.Collections.Generic;
 
 namespace Turnierplanung
 {
@@ -21,23 +19,22 @@ namespace Turnierplanung
         public Mannschaft()
         {
             Name = "Borussia Dortmund";
-            Alter = 0;
+            Alter = "1900-01-01";
             View = new View();
             Kader = new List<Spieler>();
         }
 
         // Mit bestehender Mannschaft
-        public Mannschaft(string name, int alter, List<Spieler> kader) : base(name, alter)
+        public Mannschaft(string name, string alter, List<Spieler> kader) : base(name, alter)
         {
             Name = name;
             Alter = alter;
             View = new View();
             Kader = kader;
-
         }
 
         // Neue Mannschaft
-        public Mannschaft(string name, int alter) : base(name, alter)
+        public Mannschaft(string name, string alter) : base(name, alter)
         {
             Name = name;
             Alter = alter;
@@ -75,9 +72,19 @@ namespace Turnierplanung
             View.GebeTextAus();
         }
 
-        public override void InDatenbankSpeichern(Datenbank DB)
+        public override bool InDatenbankSpeichern(Datenbank db)
         {
-            DB.GebeTeilnehmerAus();
+            return db.FuegeMannschaftHinzu("Die Gelben Nasen", "1990-01-01");
+        }
+
+        public override bool InDatenbankAendern(Datenbank db)
+        {
+            return db.AendereMannschaft(1, "Test", "1900-01-01");
+        }
+
+        public override bool InDatenbankLoeschen(Datenbank db)
+        {
+            return db.LoescheMannschaft(1);
         }
         #endregion
     }

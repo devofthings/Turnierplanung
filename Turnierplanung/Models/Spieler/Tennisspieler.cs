@@ -1,35 +1,31 @@
-﻿using System;
-using MySql.Data.MySqlClient;
-
-namespace Turnierplanung
+﻿namespace Turnierplanung
 {
     public class Tennisspieler : Spieler
     {
         #region Attribute
-        private string _rueckennummer;
         private string _beruf;
-        private View view;
+        private View _view;
         #endregion
 
         #region Propertys
-        public string Rueckennummer { get => _rueckennummer; set => _rueckennummer = value; }
         public string Beruf { get => _beruf; set => _beruf = value; }
-        public View View { get => view; set => view = value; }
+        public View View { get => _view; set => _view = value; }
         #endregion
 
         #region Konstruktoren
         public Tennisspieler() : base()
         {
-            Name = "Max Mustermann";
-            Alter = 0;
+            Name = "Max";
+            Nachname = "Mustermann";
+            Alter = "1900-01-01";
             Beruf = "Tennisspieler";
-            Rueckennummer = "0";
             View = new View();
         }
 
-        public Tennisspieler(string name, int alter, string status) : base(name, alter, status)
+        public Tennisspieler(string name, string nachname, string alter, string status, string rueckennummer) : base(name, nachname, alter, status)
         {
             Name = name;
+            Nachname = nachname;
             Alter = alter;
             Beruf = "Tennisspieler";
             View = new View();
@@ -39,7 +35,7 @@ namespace Turnierplanung
         #region Worker
         public void spielDenBall()
         {
-            View.LeseTextEin($"{Name} hat den Ball.");
+            View.LeseTextEin($"Der Spieler hat den Ball.");
             View.GebeTextAus();
         }
 
@@ -54,9 +50,20 @@ namespace Turnierplanung
             View.LeseTextEin($"Aktuell bin ich {Status}.");
             View.GebeTextAus();
         }
-        public override void InDatenbankSpeichern(Datenbank DB)
+
+        public override bool InDatenbankSpeichern(Datenbank db)
         {
-            DB.GebeTeilnehmerAus();
+            return db.FuegeTeilnehmerHinzu("Hans", "Schneider", "1990-01-01", 1);
+        }
+
+        public override bool InDatenbankAendern(Datenbank db)
+        {
+            return db.AendereTeilnehmer(1, "Test", "Lauf");
+        }
+
+        public override bool InDatenbankLoeschen(Datenbank db)
+        {
+            return db.LoescheTeilnehmer(1);
         }
         #endregion
     }

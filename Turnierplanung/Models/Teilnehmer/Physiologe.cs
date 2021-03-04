@@ -1,6 +1,4 @@
-﻿using System;
-using MySql.Data.MySqlClient;
-
+﻿
 namespace Turnierplanung
 {
     public class Physiologe : Teilnehmer
@@ -18,15 +16,17 @@ namespace Turnierplanung
         #region Konstruktoren
         public Physiologe() : base()
         {
-            Name = "Max Mustermann";
-            Alter = 0;
+            Name = "Max";
+            Nachname = "Mustermann";
+            Alter = "1900-01-01";
             Beruf = "Physiologe";
             View = new View();
         }
 
-        public Physiologe(string name, int alter) : base(name, alter)
+        public Physiologe(string name, string nachname, string alter) : base(name, nachname, alter)
         {
             Name = name;
+            Nachname = nachname;
             Alter = alter;
             Beruf = "Physiologe";
             View = new View();
@@ -46,9 +46,19 @@ namespace Turnierplanung
             View.GebeTextAus();
         }
 
-        public override void InDatenbankSpeichern(Datenbank DB)
+        public override bool InDatenbankSpeichern(Datenbank db)
         {
-            DB.GebeTeilnehmerAus();
+            return db.FuegeTeilnehmerHinzu("Hans", "Schneider", "1990-01-01", 1);
+        }
+
+        public override bool InDatenbankAendern(Datenbank db)
+        {
+            return db.AendereTeilnehmer(1, "Test", "Lauf");
+        }
+
+        public override bool InDatenbankLoeschen(Datenbank db)
+        {
+            return db.LoescheTeilnehmer(1);
         }
         #endregion
     }
