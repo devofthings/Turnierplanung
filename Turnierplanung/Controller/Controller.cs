@@ -1,7 +1,4 @@
-
-using System;
 using System.Collections.Generic;
-
 
 namespace Turnierplanung
 {
@@ -35,20 +32,50 @@ namespace Turnierplanung
 
         #endregion
         #region Worker
+        public List<Teilnehmer> AlleTeilnehmerErhalten()
+        {
+            return DB.AlleTeilnehmerAusgeben();
+        }
+
         public bool TeilnehmerHinzufügen(Teilnehmer t)
         {
-            try
-            {
-                DB.FuegeTeilnehmerHinzu(t.Name, t.Nachname, t.Alter, t.GebeJobIdAus(t.Beruf));
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
+            return DB.FuegeTeilnehmerHinzu(t.Name, t.Nachname, t.Alter, t.GebeJobIdAus(t.Beruf));
         }
-            
+
+        // TODO: id erhalten
+        public bool TeilnehmerAendern(int id, Teilnehmer t)
+        {
+            return DB.AendereTeilnehmer(id, t.Name, t.Nachname);
         }
+
+        // TODO: id erhalten
+        public bool TeilnehmerLoeschen(int id)
+        {
+            return DB.LoescheTeilnehmer(id);
+        }
+
+        public List<Mannschaft> AlleMannschaftenErhalten()
+        {
+            return DB.AlleMannschaftenAusgeben();
+        }
+
+        public bool MannschaftHinzufügen(Mannschaft m)
+        {
+            return DB.FuegeMannschaftHinzu(m.Name, m.Alter);
+        }
+
+        // TODO: id erhalten
+        public bool MannschaftAendern(int id, Mannschaft m)
+        {
+            return DB.AendereMannschaft(id, m.Name, m.Alter);
+        }
+
+        // TODO: id erhalten
+        public bool MannschaftLoeschen(int id)
+        {
+            return DB.LoescheMannschaft(id);
+        }
+
         #endregion
     }
 }

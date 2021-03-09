@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 
 namespace Turnierplanung
 {
@@ -32,6 +33,58 @@ namespace Turnierplanung
         #endregion
 
         #region Worker
+        public List<Teilnehmer> AlleTeilnehmerAusgeben()
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = $"SELECT * FROM participant";
+                    List<Teilnehmer> tmp = new List<Teilnehmer>();
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        switch (rdr[4])
+                        {
+                            case 1:
+                                tmp.Add(new Fussballspieler((string)rdr[1], (string)rdr[2], (string)rdr[3], "Gesund", "00"));
+                                break;
+                            case 2:
+                                tmp.Add(new Tennisspieler((string)rdr[1], (string)rdr[2], (string)rdr[3], "Gesund", "00"));
+                                break;
+                            case 3:
+                                tmp.Add(new Handballspieler((string)rdr[1], (string)rdr[2], (string)rdr[3], "Gesund", "00"));
+                                break;
+                            case 4:
+                                tmp.Add(new Trainer((string)rdr[1], (string)rdr[2], (string)rdr[3]));
+                                break;
+                            case 5:
+                                tmp.Add(new Zeugwart((string)rdr[1], (string)rdr[2], (string)rdr[3]));
+                                break;
+                            case 6:
+                                tmp.Add(new Physiologe((string)rdr[1], (string)rdr[2], (string)rdr[3]));
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    rdr.Close();
+                    return tmp;
+                }
+                catch { }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return null;
+            }
+        }
+
         public bool FuegeTeilnehmerHinzu(string name, string surname, string age, int job_id)
         {
             string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
@@ -111,6 +164,36 @@ namespace Turnierplanung
                 connection.Close();
                 // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
                 return true;
+            }
+        }
+
+        public List<Mannschaft> AlleMannschaftenAusgeben()
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = $"SELECT * FROM team";
+                    List<Mannschaft> tmp = new List<Mannschaft>();
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        tmp.Add(new Mannschaft((string)rdr[1], (string)rdr[2]));
+                    }
+                    rdr.Close();
+                    return tmp;
+                }
+                catch { }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return null;
             }
         }
 
