@@ -1,7 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS `tournament` DEFAULT CHARACTER SET utf8;
-USE `tournament` ;
+USE `tournament`;
 
-CREATE TABLE `tournament`.`team` (
+CREATE TABLE `tournament`.`teams` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NULL DEFAULT NULL,
     PRIMARY KEY (`id`)
@@ -13,28 +13,36 @@ CREATE TABLE `tournament`.`jobs` (
     PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `tournament`.`participant` (
+CREATE TABLE `tournament`.`properties` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(50) NULL DEFAULT NULL,
-    `surname` VARCHAR(50) NULL DEFAULT NULL,
-    `age` DATE NULL DEFAULT NULL,
-    `job_id` INT(11) NULL DEFAULT NULL,
-    INDEX `fk_participant_job` (`job_id`),
-    CONSTRAINT `fk_participant_job` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`),
+    `property` VARCHAR(50) NOT NULL,
+    `job_id` INT(11) NULL DEFAULT NOT NULL,
     PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `tournament`.`player` (
+CREATE TABLE `tournament`.`participants` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `active` TINYINT(1) NULL,
-    PRIMARY KEY (`id`),
-    `participant_id` INT(11) NULL DEFAULT NULL,
-    INDEX `fk_player_participant` (`participant_id`),
-    CONSTRAINT `fk_player_participant` FOREIGN KEY (`participant_id`) REFERENCES `participant` (`id`),
-    `team_id` INT(11) NULL DEFAULT NULL,
-    INDEX `fk_player_team` (`team_id`),
-    CONSTRAINT `fk_player_team` FOREIGN KEY (`team_id`) REFERENCES `team` (`id`),
+    `firstname` VARCHAR(50) NULL DEFAULT NULL,
+    `lastname` VARCHAR(50) NULL DEFAULT NULL,
+    `birthday` DATE NULL DEFAULT NULL,
     `job_id` INT(11) NULL DEFAULT NULL,
-    INDEX `fk_player_job` (`job_id`),
-    CONSTRAINT `fk_player_job` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`)
+    `health_status` ENUM("Gesund", "Verletzt") DEFAULT 1,
+    PRIMARY KEY (`id`),
+    INDEX `participant_job` (`job_id`),
+    CONSTRAINT `participant_job` FOREIGN KEY (`jobs_id`) REFERENCES `jobs` (`id`),
+    INDEX `participant_properties` (`id`),
+    CONSTRAINT `participant_properties` FOREIGN KEY (`participant_id`) REFERENCES `participants_properties` (`participant_id`)
+);
+
+CREATE TABLE `tournament`.`participants_properties` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `participant_id` INT(11) NOT NULL,
+    `property_id` INT(11) NOT NULL,
+    `property_value` VARCHAR(50) NULL DEFAULT NOT NULL
+);
+
+CREATE TABLE `tournament`.`participants_teams` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `participant_id` INT(11) NOT NULL,
+    `team_id` INT(11) NOT NULL,
 );
