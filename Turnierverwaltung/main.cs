@@ -6,7 +6,6 @@
         {
             Controller Controller = new Controller();
 
-            Controller.Run();
         }
     }
 }

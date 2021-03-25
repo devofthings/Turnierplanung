@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 
 namespace Turnierplanung
 {
-    public class Zeugwart : Teilnehmer
+    public class Trainer : Teilnehmer
     {
         #region Attribute
         private View view;
@@ -14,34 +14,34 @@ namespace Turnierplanung
         #endregion
 
         #region Konstruktoren
-        public Zeugwart() : base()
+        public Trainer() : base()
         {
             Name = "Max";
+            Nachname = "Mustermann";
             Alter = "1900-01-01";
-            Beruf = "Zeugwart";
+            Beruf = "Trainer";
             View = new View();
         }
 
-        public Zeugwart(string name, string nachname, string alter) : base(name, nachname, alter)
+        public Trainer(string name, string nachname) : base(name, nachname)
         {
             Name = name;
             Nachname = nachname;
-            Alter = alter;
-            Beruf = "Zeugwart";
+            Beruf = "Trainer";
             View = new View();
         }
         #endregion
 
         #region Worker
-        public void OrganisiereZeug()
+        public void Trainiere()
         {
-            View.LeseTextEin($"{Name} räumt die Bälle weg.");
+            View.LeseTextEin($"{Name} trainiert seine Mannschaft.");
             View.GebeTextAus();
         }
 
         public override void StellDichVor()
         {
-            View.LeseTextEin($"Ich bin Zeugwart und mein Name ist {Name}.");
+            View.LeseTextEin($"Ich bin Trainer und mein Name ist {Name}.");
             View.GebeTextAus();
         }
 

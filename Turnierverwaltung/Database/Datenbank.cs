@@ -62,13 +62,13 @@ namespace Turnierplanung
                                 tmp.Add(new Handballspieler((string)rdr[1], (string)rdr[2], (string)rdr[3], "Gesund", "00"));
                                 break;
                             case 4:
-                                tmp.Add(new Trainer((string)rdr[1], (string)rdr[2], (string)rdr[3]));
+                                tmp.Add(new Trainer((string)rdr[1], (string)rdr[3]));
                                 break;
                             case 5:
-                                tmp.Add(new Zeugwart((string)rdr[1], (string)rdr[2], (string)rdr[3]));
+                                tmp.Add(new Zeugwart((string)rdr[1], (string)rdr[3]));
                                 break;
                             case 6:
-                                tmp.Add(new Physiologe((string)rdr[1], (string)rdr[2], (string)rdr[3]));
+                                tmp.Add(new Physiologe((string)rdr[1], (string)rdr[3]));
                                 break;
                             default:
                                 break;

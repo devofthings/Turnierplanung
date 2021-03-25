@@ -16,7 +16,7 @@
             Status = "Gesund";
         }
 
-        public Spieler(string name,string nachname, string alter, string status) : base(name, nachname, alter)
+        public Spieler(string name,string nachname, string alter, string status) : base(name, nachname, alter, "Fußballspieler")
         {
             Name = name;
             Nachname = nachname;

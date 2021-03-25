@@ -21,11 +21,10 @@ namespace Turnierplanung
             View = new View();
         }
 
-        public Physiologe(string name, string nachname, string alter) : base(name, nachname, alter)
+        public Physiologe(string name, string nachname) : base(name, nachname)
         {
             Name = name;
             Nachname = nachname;
-            Alter = alter;
             Beruf = "Physiologe";
             View = new View();
         }
