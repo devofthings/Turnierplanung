@@ -197,7 +197,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="View\View.aspx" />
+    <Content Include="View\WebView.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -242,12 +242,12 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="View\View.aspx.cs">
-      <DependentUpon>View.aspx</DependentUpon>
+    <Compile Include="View\WebView.aspx.cs">
+      <DependentUpon>WebView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\View.aspx.designer.cs">
-      <DependentUpon>View.aspx</DependentUpon>
+    <Compile Include="View\WebView.aspx.designer.cs">
+      <DependentUpon>WebView.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\View.cs" />
   </ItemGroup>
