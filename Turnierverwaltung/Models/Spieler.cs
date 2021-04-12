@@ -1,4 +1,6 @@
-﻿namespace Turnierplanung
+﻿using System;
+
+namespace Turnierplanung
 {
     public abstract class Spieler : Teilnehmer
     {
@@ -7,7 +9,6 @@
         #endregion
 
         #region Propertys
-        public string Status { get => _status; set => _status = value; }
         #endregion
 
         #region Konstruktoren
@@ -16,9 +17,9 @@
             Status = "Gesund";
         }
 
-        public Spieler(string name,string nachname, string alter, string status) : base(name, nachname, alter, "Fußballspieler")
+        public Spieler(string name,string nachname, string alter, string status) : base(name, nachname, alter, "Fußballspieler", status)
         {
-            Name = name;
+            Vorname = name;
             Nachname = nachname;
             Alter = alter;
             Status = status;
@@ -27,6 +28,11 @@
 
         #region Worker
         public abstract void GebeGesundheitsStatusAus();
+        public override void StellDichVor()
+        {
+            Console.Write("Hallo");
+        }
         #endregion
+
     }
 }

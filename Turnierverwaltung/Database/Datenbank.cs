@@ -44,37 +44,16 @@ namespace Turnierplanung
                     connection.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = $"SELECT * FROM participant";
+                    cmd.CommandText = $"SELECT * FROM participants";
                     List<Teilnehmer> tmp = new List<Teilnehmer>();
                     MySqlDataReader rdr = cmd.ExecuteReader();
-
+                    
+                    tmp.Add(new Fussballspieler());
                     while (rdr.Read())
                     {
-                        switch (rdr[4])
-                        {
-                            case 1:
-                                tmp.Add(new Fussballspieler((string)rdr[1], (string)rdr[2], (string)rdr[3], "Gesund", "00"));
-                                break;
-                            case 2:
-                                tmp.Add(new Tennisspieler((string)rdr[1], (string)rdr[2], (string)rdr[3], "Gesund", "00"));
-                                break;
-                            case 3:
-                                tmp.Add(new Handballspieler((string)rdr[1], (string)rdr[2], (string)rdr[3], "Gesund", "00"));
-                                break;
-                            case 4:
-                                tmp.Add(new Trainer((string)rdr[1], (string)rdr[3]));
-                                break;
-                            case 5:
-                                tmp.Add(new Zeugwart((string)rdr[1], (string)rdr[3]));
-                                break;
-                            case 6:
-                                tmp.Add(new Physiologe((string)rdr[1], (string)rdr[3]));
-                                break;
-                            default:
-                                break;
-                        }
+                        System.Diagnostics.Debug.WriteLine(rdr[0].ToString() + ":" + rdr[1].ToString() + " " + rdr[2].ToString() + " " + rdr[3].ToString() + " " + rdr[4].ToString() + " " + rdr[5].ToString());
+                        tmp.Add(new Fussballspieler(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[5].ToString()));
                     }
-                    rdr.Close();
                     return tmp;
                 }
                 catch { }
@@ -184,7 +163,7 @@ namespace Turnierplanung
 
                     while (rdr.Read())
                     {
-                        tmp.Add(new Mannschaft((string)rdr[1], (string)rdr[2]));
+                        tmp.Add(new Mannschaft((string)rdr[1]));
                     }
                     rdr.Close();
                     return tmp;

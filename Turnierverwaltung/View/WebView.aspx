@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebView.aspx.cs" Inherits="Turnierverwaltung.WebView.WebView" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,7 +31,7 @@
                     <asp:TableHeaderCell>Beruf</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
             </asp:Table>
-            <asp:Button id="btn_getAllParticipants" text="Gebe Alle Teilnehmer aus" OnClick="getAllParticipants" runat="server" Font-Names="Verdana"/>
+            <asp:Button id="btn_getAllParticipants" text="Gebe Alle Teilnehmer aus" OnClick="getParticipants" runat="server" Font-Names="Verdana"/>
         </div>
         <div>
             <h3>Spieler hinzufügen</h3>

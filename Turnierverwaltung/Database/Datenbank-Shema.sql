@@ -48,4 +48,5 @@ CREATE TABLE tournament.participants_teams (
     id INT NOT NULL AUTO_INCREMENT,
     participant_id INT(11) NOT NULL,
     team_id INT(11) NOT NULL,
+    PRIMARY KEY (id)
 );

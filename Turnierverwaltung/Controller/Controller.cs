@@ -21,7 +21,7 @@ namespace Turnierplanung
         {
             Teilnehmer = new List<Teilnehmer>();
             Mannschaften = new List<Mannschaft>();
-            DB = new Datenbank("192.168.64.2", "tournament", "root", "");
+            DB = new Datenbank("127.0.0.1", "tournament", "root", "");
         }
         public Controller(List<Teilnehmer> teilnehmer, List<Mannschaft> mannschaften, string ip, string db, string user, string password)
         {
@@ -30,7 +30,13 @@ namespace Turnierplanung
             DB = new Datenbank(ip, db, user, password);
         }
 
+        public Controller(List<Teilnehmer> teilnehmer, string ip, string db, string user, string password)
+        {
+            Teilnehmer = teilnehmer;
+            DB = new Datenbank(ip, db, user, password);
+        }
         #endregion
+
         #region Worker
         public List<Teilnehmer> AlleTeilnehmerErhalten()
         {
@@ -39,13 +45,13 @@ namespace Turnierplanung
 
         public bool TeilnehmerHinzufügen(Teilnehmer t)
         {
-            return DB.FuegeTeilnehmerHinzu(t.Name, t.Nachname, t.Alter, t.GebeJobIdAus(t.Beruf));
+            return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Alter, t.GebeJobIdAus(t.Beruf));
         }
 
         // TODO: id erhalten
         public bool TeilnehmerAendern(int id, Teilnehmer t)
         {
-            return DB.AendereTeilnehmer(id, t.Name, t.Nachname);
+            return DB.AendereTeilnehmer(id, t.Vorname, t.Nachname);
         }
 
         // TODO: id erhalten
@@ -61,13 +67,13 @@ namespace Turnierplanung
 
         public bool MannschaftHinzufügen(Mannschaft m)
         {
-            return DB.FuegeMannschaftHinzu(m.Name, m.Alter);
+            return DB.FuegeMannschaftHinzu(m.Vorname, m.Alter);
         }
 
         // TODO: id erhalten
         public bool MannschaftAendern(int id, Mannschaft m)
         {
-            return DB.AendereMannschaft(id, m.Name, m.Alter);
+            return DB.AendereMannschaft(id, m.Vorname, m.Alter);
         }
 
         // TODO: id erhalten

@@ -7,36 +7,38 @@ namespace Turnierplanung
         private string _nachname;
         private string _alter;
         private string _beruf;
+        private string _status;
         #endregion
 
         #region Propertys
-        public string Name { get => _vorname; set => _vorname = value; }
+        public string Vorname { get => _vorname; set => _vorname = value; }
         public string Nachname { get => _nachname; set => _nachname = value; }
         public string Alter { get => _alter; set => _alter = value; }
         public string Beruf { get => _beruf; set => _beruf = value; }
+        public string Status { get => _status; set => _status = value; }
         #endregion
 
         #region Konstruktoren
         public Teilnehmer()
         {
-            Name = "Max";
+            Vorname = "Max";
             Nachname = "Mustermann";
             Alter = "1900-01-01";
             Beruf = "Fußballspieler";
         }
-        public Teilnehmer(string name, string nachname, string alter, string beruf)
+        public Teilnehmer(string vorname, string nachname, string alter, string beruf, string status)
         {
-            Name = name;
+            Vorname = vorname;
             Nachname = nachname;
             Alter = alter;
             Beruf = beruf;
+            Status = status;
         }
 
         // Mannschaftskonstruktor
-        public Teilnehmer(string name, string alter)
+        public Teilnehmer(string name)
         {
-            Name = name;
-            Alter = alter;
+            Vorname = name;
         }
         #endregion
 

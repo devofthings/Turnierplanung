@@ -15,7 +15,7 @@
         #region Konstruktoren
         public Handballspieler() : base()
         {
-            Name = "Max";
+            Vorname = "Max";
             Nachname = "Mustermann";
             Alter = "1900-01-01";
             Beruf = "Handballspieler";
@@ -25,7 +25,7 @@
 
         public Handballspieler(string name, string nachname, string alter, string status, string rueckennummer) : base(name, nachname, alter, status)
         {
-            Name = name;
+            Vorname = name;
             Nachname = nachname;
             Alter = alter;
             Beruf = "Handballspieler";
@@ -43,7 +43,7 @@
 
         public override void StellDichVor()
         {
-            View.LeseTextEin($"Mein Name ist {Name} ich bin {Beruf}.");
+            View.LeseTextEin($"Mein Name ist {Vorname} ich bin {Beruf}.");
             View.GebeTextAus();
         }
 

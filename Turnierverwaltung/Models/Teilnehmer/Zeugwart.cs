@@ -16,15 +16,15 @@ namespace Turnierplanung
         #region Konstruktoren
         public Zeugwart() : base()
         {
-            Name = "Max";
+            Vorname = "Max";
             Alter = "1900-01-01";
             Beruf = "Zeugwart";
             View = new View();
         }
 
-        public Zeugwart(string name, string nachname) : base(name, nachname)
+        public Zeugwart(string name, string nachname) : base()
         {
-            Name = name;
+            Vorname = name;
             Nachname = nachname;
             Beruf = "Zeugwart";
             View = new View();
@@ -34,13 +34,13 @@ namespace Turnierplanung
         #region Worker
         public void OrganisiereZeug()
         {
-            View.LeseTextEin($"{Name} räumt die Bälle weg.");
+            View.LeseTextEin($"{Vorname} räumt die Bälle weg.");
             View.GebeTextAus();
         }
 
         public override void StellDichVor()
         {
-            View.LeseTextEin($"Ich bin Zeugwart und mein Name ist {Name}.");
+            View.LeseTextEin($"Ich bin Zeugwart und mein Name ist {Vorname}.");
             View.GebeTextAus();
         }
 

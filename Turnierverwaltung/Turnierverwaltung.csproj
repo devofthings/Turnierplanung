@@ -151,10 +151,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Database\Datenbank-Shema.sql" />
-    <Content Include="Database\Jobs-Data.sql" />
-    <Content Include="Database\Participant-Data.sql" />
-    <Content Include="Database\Player-Data.sql" />
-    <Content Include="Database\Teams-Data.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

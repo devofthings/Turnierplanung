@@ -18,26 +18,24 @@ namespace Turnierplanung
         // Ohne Mannschaft
         public Mannschaft()
         {
-            Name = "Borussia Dortmund";
+            Vorname = "Borussia Dortmund";
             Alter = "1900-01-01";
             View = new View();
             Kader = new List<Spieler>();
         }
 
         // Mit bestehender Mannschaft
-        public Mannschaft(string name, string alter, List<Spieler> kader) : base(name, alter)
+        public Mannschaft(string name, string alter, List<Spieler> kader) : base(name)
         {
-            Name = name;
-            Alter = alter;
+            Vorname = name;
             View = new View();
             Kader = kader;
         }
 
         // Neue Mannschaft
-        public Mannschaft(string name, string alter) : base(name, alter)
+        public Mannschaft(string name) : base()
         {
-            Name = name;
-            Alter = alter;
+            Vorname = name;
             View = new View();
             Kader = new List<Spieler>();
         }
@@ -46,7 +44,7 @@ namespace Turnierplanung
         #region Worker
         private Spieler FindeSpieler(string name)
         {
-            int index = Kader.FindIndex(spieler => spieler.Name == name);
+            int index = Kader.FindIndex(spieler => spieler.Vorname == name);
             return Kader[index];
         }
         public void FuegeSpielerZuMannschaftHinzu(Spieler spieler)
@@ -68,7 +66,7 @@ namespace Turnierplanung
 
         public override void StellDichVor()
         {
-            View.LeseTextEin($"Wir sind die Mannschaft: '{Name}'!");
+            View.LeseTextEin($"Wir sind die Mannschaft: '{Vorname}'!");
             View.GebeTextAus();
         }
 

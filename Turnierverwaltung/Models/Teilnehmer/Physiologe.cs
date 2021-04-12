@@ -14,16 +14,16 @@ namespace Turnierplanung
         #region Konstruktoren
         public Physiologe() : base()
         {
-            Name = "Max";
+            Vorname = "Max";
             Nachname = "Mustermann";
             Alter = "1900-01-01";
             Beruf = "Physiologe";
             View = new View();
         }
 
-        public Physiologe(string name, string nachname) : base(name, nachname)
+        public Physiologe(string name, string nachname) : base()
         {
-            Name = name;
+            Vorname = name;
             Nachname = nachname;
             Beruf = "Physiologe";
             View = new View();
@@ -33,13 +33,13 @@ namespace Turnierplanung
         #region Worker
         public void BaueMannschaftAuf()
         {
-            View.LeseTextEin($"{Name} versucht die Gesundheit der mannschaft zu verbessern.");
+            View.LeseTextEin($"{Vorname} versucht die Gesundheit der mannschaft zu verbessern.");
             View.GebeTextAus();
         }
 
         public override void StellDichVor()
         {
-            View.LeseTextEin($"Ich bin Physiologe und mein Name ist {Name}.");
+            View.LeseTextEin($"Ich bin Physiologe und mein Name ist {Vorname}.");
             View.GebeTextAus();
         }
 
