@@ -45,7 +45,7 @@ namespace Turnierplanung
 
         public bool TeilnehmerHinzufügen(Teilnehmer t)
         {
-            return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Alter, t.GebeJobIdAus(t.Beruf));
+            return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
         }
 
         // TODO: id erhalten
@@ -67,13 +67,13 @@ namespace Turnierplanung
 
         public bool MannschaftHinzufügen(Mannschaft m)
         {
-            return DB.FuegeMannschaftHinzu(m.Vorname, m.Alter);
+            return DB.FuegeMannschaftHinzu(m.Vorname, m.Geburtstag);
         }
 
         // TODO: id erhalten
         public bool MannschaftAendern(int id, Mannschaft m)
         {
-            return DB.AendereMannschaft(id, m.Vorname, m.Alter);
+            return DB.AendereMannschaft(id, m.Vorname, m.Geburtstag);
         }
 
         // TODO: id erhalten

@@ -13,7 +13,7 @@ namespace Turnierplanung
         #region Propertys
         public string Vorname { get => _vorname; set => _vorname = value; }
         public string Nachname { get => _nachname; set => _nachname = value; }
-        public string Alter { get => _alter; set => _alter = value; }
+        public string Geburtstag { get => _alter; set => _alter = value; }
         public string Beruf { get => _beruf; set => _beruf = value; }
         public string Status { get => _status; set => _status = value; }
         #endregion
@@ -23,14 +23,14 @@ namespace Turnierplanung
         {
             Vorname = "Max";
             Nachname = "Mustermann";
-            Alter = "1900-01-01";
+            Geburtstag = "1900-01-01";
             Beruf = "Fußballspieler";
         }
-        public Teilnehmer(string vorname, string nachname, string alter, string beruf, string status)
+        public Teilnehmer(string vorname, string nachname, string geburtstag, string beruf, string status)
         {
             Vorname = vorname;
             Nachname = nachname;
-            Alter = alter;
+            Geburtstag = geburtstag;
             Beruf = beruf;
             Status = status;
         }
@@ -59,9 +59,9 @@ namespace Turnierplanung
                     return 3;
                 case "Trainer":
                     return 4;
-                case "Zeugwart":
-                    return 5;
                 case "Physiologe":
+                    return 5;
+                case "Zeugwart":
                     return 6;
                 default:
                     return 0;

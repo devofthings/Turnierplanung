@@ -85,7 +85,7 @@ namespace Turnierplanung
             }
         }
 
-        public bool FuegeTeilnehmerHinzu(string name, string surname, string age, int job_id)
+        public bool FuegeTeilnehmerHinzu(string firstname, string lastname, string birthday, int job_id, string health_status)
         {
             string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
             // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
@@ -97,11 +97,12 @@ namespace Turnierplanung
 
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = "INSERT INTO participant (name, surname, age, job_id) VALUES (@name, @surname, @age, @job_id)";
-                    cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@surname", surname);
-                    cmd.Parameters.AddWithValue("@age", age);
-                    cmd.Parameters.AddWithValue("@job_id", job_id);
+                    cmd.CommandText = "INSERT INTO participants (firstname, lastname, birthday, job_id, health_status) VALUES (@firstname, @lastname, @birthday, @job, @health)";
+                    cmd.Parameters.AddWithValue("@firstname", firstname);
+                    cmd.Parameters.AddWithValue("@lastname", lastname);
+                    cmd.Parameters.AddWithValue("@birthday", birthday);
+                    cmd.Parameters.AddWithValue("@job", job_id);
+                    cmd.Parameters.AddWithValue("@health", health_status);
                     cmd.ExecuteNonQuery();
                 }
                 catch

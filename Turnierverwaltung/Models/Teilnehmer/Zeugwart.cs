@@ -17,16 +17,16 @@ namespace Turnierplanung
         public Zeugwart() : base()
         {
             Vorname = "Max";
-            Alter = "1900-01-01";
+            Geburtstag = "1900-01-01";
             Beruf = "Zeugwart";
             View = new View();
         }
 
-        public Zeugwart(string name, string nachname, string alter, string beruf, string status) : base(name, nachname, alter, beruf, status)
+        public Zeugwart(string name, string nachname, string geburtstag, string beruf, string status) : base(name, nachname, geburtstag, beruf, status)
         {
             Vorname = name;
             Nachname = nachname;
-            Alter = alter;
+            Geburtstag = geburtstag;
             Beruf = beruf;
             Status = status;
         }
@@ -42,7 +42,7 @@ namespace Turnierplanung
        
         public override bool InDatenbankSpeichern(Datenbank db)
         {
-            return db.FuegeTeilnehmerHinzu("Hans", "Schneider", "1990-01-01", 1);
+            return db.FuegeTeilnehmerHinzu(Vorname, Nachname, Geburtstag, 6, Status);
         }
 
         public override bool InDatenbankAendern(Datenbank db)

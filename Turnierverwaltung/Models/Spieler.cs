@@ -16,11 +16,11 @@ namespace Turnierplanung
             Status = "Gesund";
         }
 
-        public Spieler(string name,string nachname, string alter, string beruf, string status) : base(name, nachname, alter, beruf, status)
+        public Spieler(string name,string nachname, string geburtstag, string beruf, string status) : base(name, nachname, geburtstag, beruf, status)
         {
             Vorname = name;
             Nachname = nachname;
-            Alter = alter;
+            Geburtstag = geburtstag;
             Beruf = beruf;
             Status = status;
         }

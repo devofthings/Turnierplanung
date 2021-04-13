@@ -19,7 +19,7 @@ namespace Turnierplanung
         public Mannschaft()
         {
             Vorname = "Borussia Dortmund";
-            Alter = "1900-01-01";
+            Geburtstag = "1900-01-01";
             View = new View();
             Kader = new List<Spieler>();
         }

@@ -13,15 +13,15 @@
         {
             Vorname = "Max";
             Nachname = "Mustermann";
-            Alter = "1900-01-01";
+            Geburtstag = "1900-01-01";
             Beruf = "Tennisspieler";
         }
 
-        public Tennisspieler(string name, string nachname, string alter, string beruf, string status) : base(name, nachname, alter, beruf, status)
+        public Tennisspieler(string name, string nachname, string geburtstag, string beruf, string status) : base(name, nachname, geburtstag, beruf, status)
         {
             Vorname = name;
             Nachname = nachname;
-            Alter = alter;
+            Geburtstag = geburtstag;
             Beruf = beruf;
             Status = status;
         }
@@ -31,7 +31,7 @@
 
         public override bool InDatenbankSpeichern(Datenbank db)
         {
-            return db.FuegeTeilnehmerHinzu("Hans", "Schneider", "1990-01-01", 1);
+            return db.FuegeTeilnehmerHinzu(Vorname, Nachname, Geburtstag, 2, Status);
         }
 
         public override bool InDatenbankAendern(Datenbank db)
