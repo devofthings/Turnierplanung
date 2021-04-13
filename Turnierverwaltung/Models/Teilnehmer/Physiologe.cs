@@ -4,11 +4,9 @@ namespace Turnierplanung
     public class Physiologe : Teilnehmer
     {
         #region Attribute
-        private View view;
         #endregion
 
         #region Propertys
-        public View View { get => view; set => view = value; }
         #endregion
 
         #region Konstruktoren
@@ -18,30 +16,19 @@ namespace Turnierplanung
             Nachname = "Mustermann";
             Alter = "1900-01-01";
             Beruf = "Physiologe";
-            View = new View();
         }
 
-        public Physiologe(string name, string nachname) : base()
+        public Physiologe(string name, string nachname, string alter, string beruf, string status) : base(name, nachname, alter, beruf, status)
         {
             Vorname = name;
             Nachname = nachname;
-            Beruf = "Physiologe";
-            View = new View();
+            Alter = alter;
+            Beruf = beruf;
+            Status = status;
         }
         #endregion
 
         #region Worker
-        public void BaueMannschaftAuf()
-        {
-            View.LeseTextEin($"{Vorname} versucht die Gesundheit der mannschaft zu verbessern.");
-            View.GebeTextAus();
-        }
-
-        public override void StellDichVor()
-        {
-            View.LeseTextEin($"Ich bin Physiologe und mein Name ist {Vorname}.");
-            View.GebeTextAus();
-        }
 
         public override bool InDatenbankSpeichern(Datenbank db)
         {

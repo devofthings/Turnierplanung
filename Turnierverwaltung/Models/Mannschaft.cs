@@ -64,11 +64,6 @@ namespace Turnierplanung
             View.GebeTextAus();
         }
 
-        public override void StellDichVor()
-        {
-            View.LeseTextEin($"Wir sind die Mannschaft: '{Vorname}'!");
-            View.GebeTextAus();
-        }
 
         public override bool InDatenbankSpeichern(Datenbank db)
         {

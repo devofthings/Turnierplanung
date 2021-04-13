@@ -23,12 +23,13 @@ namespace Turnierplanung
             View = new View();
         }
 
-        public Trainer(string name, string nachname) : base()
+        public Trainer(string name, string nachname, string alter, string beruf, string status) : base(name, nachname, alter, beruf, status)
         {
             Vorname = name;
             Nachname = nachname;
-            Beruf = "Trainer";
-            View = new View();
+            Alter = alter;
+            Beruf = beruf;
+            Status = status;
         }
         #endregion
 
@@ -39,11 +40,7 @@ namespace Turnierplanung
             View.GebeTextAus();
         }
 
-        public override void StellDichVor()
-        {
-            View.LeseTextEin($"Ich bin Trainer und mein Name ist {Vorname}.");
-            View.GebeTextAus();
-        }
+       
 
         public override bool InDatenbankSpeichern(Datenbank db)
         {

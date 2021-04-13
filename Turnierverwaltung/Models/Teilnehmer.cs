@@ -43,7 +43,6 @@ namespace Turnierplanung
         #endregion
 
         #region Worker
-        public abstract void StellDichVor();
 
         public abstract bool InDatenbankSpeichern(Datenbank db);
         public abstract bool InDatenbankAendern(Datenbank db);

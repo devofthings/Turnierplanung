@@ -48,11 +48,32 @@ namespace Turnierplanung
                     List<Teilnehmer> tmp = new List<Teilnehmer>();
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     
-                    tmp.Add(new Fussballspieler());
                     while (rdr.Read())
                     {
+                        switch(rdr[4])
+                        {
+                            case 1:
+                                tmp.Add(new Fussballspieler(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Fußballspieler", rdr[5].ToString()));
+                                break;
+                            case 2:
+                                tmp.Add(new Tennisspieler(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Tennisspieler", rdr[5].ToString()));
+                                break;
+                            case 3:
+                                tmp.Add(new Handballspieler(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Handballspieler", rdr[5].ToString()));
+                                break;
+                            case 4:
+                                tmp.Add(new Trainer(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Trainer", rdr[5].ToString()));
+                                break;
+                            case 5:
+                                tmp.Add(new Physiologe(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Physiologe", rdr[5].ToString()));
+                                break;
+                            case 6:
+                                tmp.Add(new Zeugwart(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Zeugwart", rdr[5].ToString()));
+                                break;
+                            default:
+                                break;
+                        }
                         System.Diagnostics.Debug.WriteLine(rdr[0].ToString() + ":" + rdr[1].ToString() + " " + rdr[2].ToString() + " " + rdr[3].ToString() + " " + rdr[4].ToString() + " " + rdr[5].ToString());
-                        tmp.Add(new Fussballspieler(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[5].ToString()));
                     }
                     return tmp;
                 }

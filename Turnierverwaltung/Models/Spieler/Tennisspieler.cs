@@ -3,11 +3,9 @@
     public class Tennisspieler : Spieler
     {
         #region Attribute
-        private View _view;
         #endregion
 
         #region Propertys
-        public View View { get => _view; set => _view = value; }
         #endregion
 
         #region Konstruktoren
@@ -17,37 +15,19 @@
             Nachname = "Mustermann";
             Alter = "1900-01-01";
             Beruf = "Tennisspieler";
-            View = new View();
         }
 
-        public Tennisspieler(string name, string nachname, string alter, string status, string rueckennummer) : base(name, nachname, alter, status)
+        public Tennisspieler(string name, string nachname, string alter, string beruf, string status) : base(name, nachname, alter, beruf, status)
         {
             Vorname = name;
             Nachname = nachname;
             Alter = alter;
-            Beruf = "Tennisspieler";
-            View = new View();
+            Beruf = beruf;
+            Status = status;
         }
         #endregion
 
         #region Worker
-        public void spielDenBall()
-        {
-            View.LeseTextEin($"Der Spieler hat den Ball.");
-            View.GebeTextAus();
-        }
-
-        public override void StellDichVor()
-        {
-            View.LeseTextEin($"Mein Name ist {Vorname} ich bin {Beruf}.");
-            View.GebeTextAus();
-        }
-
-        public override void GebeGesundheitsStatusAus()
-        {
-            View.LeseTextEin($"Aktuell bin ich {Status}.");
-            View.GebeTextAus();
-        }
 
         public override bool InDatenbankSpeichern(Datenbank db)
         {

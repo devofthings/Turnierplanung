@@ -22,12 +22,13 @@ namespace Turnierplanung
             View = new View();
         }
 
-        public Zeugwart(string name, string nachname) : base()
+        public Zeugwart(string name, string nachname, string alter, string beruf, string status) : base(name, nachname, alter, beruf, status)
         {
             Vorname = name;
             Nachname = nachname;
-            Beruf = "Zeugwart";
-            View = new View();
+            Alter = alter;
+            Beruf = beruf;
+            Status = status;
         }
         #endregion
 
@@ -38,12 +39,7 @@ namespace Turnierplanung
             View.GebeTextAus();
         }
 
-        public override void StellDichVor()
-        {
-            View.LeseTextEin($"Ich bin Zeugwart und mein Name ist {Vorname}.");
-            View.GebeTextAus();
-        }
-
+       
         public override bool InDatenbankSpeichern(Datenbank db)
         {
             return db.FuegeTeilnehmerHinzu("Hans", "Schneider", "1990-01-01", 1);

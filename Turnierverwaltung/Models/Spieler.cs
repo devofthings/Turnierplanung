@@ -5,7 +5,6 @@ namespace Turnierplanung
     public abstract class Spieler : Teilnehmer
     {
         #region Attribute
-        private string _status; // Gesund oder Verletzt
         #endregion
 
         #region Propertys
@@ -17,21 +16,18 @@ namespace Turnierplanung
             Status = "Gesund";
         }
 
-        public Spieler(string name,string nachname, string alter, string status) : base(name, nachname, alter, "Fußballspieler", status)
+        public Spieler(string name,string nachname, string alter, string beruf, string status) : base(name, nachname, alter, beruf, status)
         {
             Vorname = name;
             Nachname = nachname;
             Alter = alter;
+            Beruf = beruf;
             Status = status;
         }
         #endregion
 
         #region Worker
-        public abstract void GebeGesundheitsStatusAus();
-        public override void StellDichVor()
-        {
-            Console.Write("Hallo");
-        }
+        
         #endregion
 
     }
