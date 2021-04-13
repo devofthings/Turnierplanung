@@ -43,7 +43,7 @@ namespace Turnierplanung
             return DB.AlleTeilnehmerAusgeben();
         }
 
-        public bool TeilnehmerHinzufügen(Teilnehmer t)
+        public bool TeilnehmerHinzufuegen(Teilnehmer t)
         {
             return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
         }

@@ -38,15 +38,18 @@
             <h4>Persönliche Informationen</h4>
             <asp:TextBox id="txt_participantFirstName" placeholder="Vorname" runat="server"/>
             <asp:TextBox id="txt_participantLastName" placeholder="Nachname" runat="server"/>
-            <asp:TextBox id="txt_birthday" placeholder="Geburtsdatum (DD-MM-YYYY)" runat="server"/>
+            <asp:TextBox id="txt_birthday" placeholder="Geburtsdatum (YYYY-MM-DD)" runat="server"/>
             <h4>Beruf</h4>
-            <asp:RadioButtonList runat="server">
-                <asp:ListItem>Fußballspieler</asp:ListItem>
-                <asp:ListItem>Tennisspieler</asp:ListItem>
-                <asp:ListItem>Handballspieler</asp:ListItem>
+            <asp:RadioButtonList id="job_list" runat="server">
+                <asp:ListItem Value="1">Fußballspieler</asp:ListItem>
+                <asp:ListItem Value="2">Tennisspieler</asp:ListItem>
+                <asp:ListItem Value="3">Handballspieler</asp:ListItem>
+                <asp:ListItem Value="4">Trainer</asp:ListItem>
+                <asp:ListItem Value="5">Physiologe</asp:ListItem>
+                <asp:ListItem Value="6">Zeugwart</asp:ListItem>
             </asp:RadioButtonList>
             <h4>Gesundheitszustand</h4>
-            <asp:RadioButtonList runat="server">
+            <asp:RadioButtonList id="health_status_list" runat="server">
                 <asp:ListItem>Gesund</asp:ListItem>
                 <asp:ListItem>Verletzt</asp:ListItem>
             </asp:RadioButtonList>

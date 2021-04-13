@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Linq;
 using Turnierplanung;
 
 namespace Turnierverwaltung.WebView
@@ -35,7 +36,6 @@ namespace Turnierverwaltung.WebView
 
         public void getParticipants(object sender, EventArgs e)
         {
-            btn_getAllParticipants.Text = "Du hast mich geklickert";
             Teilnehmer = Control.AlleTeilnehmerErhalten();
             foreach (Teilnehmer t in Teilnehmer)
             {
@@ -52,7 +52,35 @@ namespace Turnierverwaltung.WebView
 
         public void addParticipant(object sender, EventArgs e)
         {
-            btn_addParticipant.Text = "Du hast hinzugefügt";
+            string firstname = txt_participantFirstName.Text;
+            string lastname = txt_participantLastName.Text;
+            string birthday = txt_birthday.Text;
+            string health = health_status_list.SelectedValue;
+            string selectedJob =job_list.SelectedValue;
+            switch (selectedJob)
+            {
+                case "1":
+                    Teilnehmer.Add(new Fussballspieler(firstname, lastname, birthday, "Fußballspieler", health));
+                    break;
+                case "2":
+                    Teilnehmer.Add(new Tennisspieler(firstname, lastname, birthday, "Tennisspieler", health));
+                    break;
+                case "3":
+                    Teilnehmer.Add(new Handballspieler(firstname, lastname, birthday, "Handballspieler", health));
+                    break;
+                case "4":
+                    Teilnehmer.Add(new Trainer(firstname, lastname, birthday, "Trainer", health));
+                    break;
+                case "5":
+                    Teilnehmer.Add(new Physiologe(firstname, lastname, birthday, "Physiologe", health));
+                    break;
+                case "6":
+                    Teilnehmer.Add(new Zeugwart(firstname, lastname, birthday, "Zeugwart", health));
+                    break;
+                default:
+                    break;
+            }
+            Control.TeilnehmerHinzufuegen(Teilnehmer.Last());
         }
 
         public void deleteParticipant(object sender, EventArgs e)

@@ -69,6 +69,24 @@ namespace Turnierverwaltung.WebView
         protected global::System.Web.UI.WebControls.TextBox txt_birthday;
 
         /// <summary>
+        /// job_list-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList job_list;
+
+        /// <summary>
+        /// health_status_list-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList health_status_list;
+
+        /// <summary>
         /// btn_addParticipant-Steuerelement
         /// </summary>
         /// <remarks>
