@@ -18,12 +18,28 @@
             background-color: #000000;
             color: #c3c3c3;
         }
+
+        h1 {
+            text-align: center;
+        }
+
+        .border {
+            border-style: solid;
+            border-width: thin;
+            border-color: palegreen;
+            margin-bottom: 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <h1>Turnierverwaltung</h1>
-        <div>
+        <div class="border">
             <h3>Teilnehmer ausgeben</h3>
             <asp:Table id="tbl_participants" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
                 <asp:TableHeaderRow>
@@ -34,7 +50,7 @@
             </asp:Table>
             <asp:Button id="btn_getAllParticipants" text="Gebe Alle Teilnehmer aus" OnClick="getParticipants" runat="server" Font-Names="Verdana"/>
         </div>
-        <div>
+        <div class="border">
             <h3>Spieler hinzufügen</h3>
             <h4>Persönliche Informationen</h4>
             <asp:TextBox id="txt_participantFirstName" placeholder="Vorname" runat="server"/>
@@ -56,7 +72,30 @@
             </asp:RadioButtonList>
             <asp:Button id="btn_addParticipant" text="Teilnehmer hinzufügen" OnClick="addParticipant" runat="server" Font-Names="Verdana"/>
         </div>
-        <div>
+        <div class="border">
+            <h3>Teilnehmer ändern</h3>
+            <asp:TextBox id="txt_idToChange" placeholder="ID" runat="server"/>
+            <h4>Persönliche Informationen</h4>
+            <asp:TextBox id="txt_changeParticipantFirstName" placeholder="Vorname" runat="server"/>
+            <asp:TextBox id="txt_changeParticipantLastName" placeholder="Nachname" runat="server"/>
+            <asp:TextBox id="txt_changeBirthday" placeholder="Geburtsdatum (YYYY-MM-DD)" runat="server"/>
+            <h4>Beruf</h4>
+            <asp:RadioButtonList id="changeJob_list" runat="server">
+                <asp:ListItem Value="1">Fußballspieler</asp:ListItem>
+                <asp:ListItem Value="2">Tennisspieler</asp:ListItem>
+                <asp:ListItem Value="3">Handballspieler</asp:ListItem>
+                <asp:ListItem Value="4">Trainer</asp:ListItem>
+                <asp:ListItem Value="5">Physiologe</asp:ListItem>
+                <asp:ListItem Value="6">Zeugwart</asp:ListItem>
+            </asp:RadioButtonList>
+            <h4>Gesundheitszustand</h4>
+            <asp:RadioButtonList id="changeHealth_status_list" runat="server">
+                <asp:ListItem>Gesund</asp:ListItem>
+                <asp:ListItem>Verletzt</asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:Button id="btn_changeParticipant" text="Teilnehmer ändern" OnClick="changeParticipant" runat="server" Font-Names="Verdana"/>
+        </div>
+        <div class="border">
             <h3>Teilnehmer löschen</h3>
             <asp:TextBox id="txt_idToDelete" placeholder="ID" runat="server"/>
             <asp:Button id="btn_deleteParticipant" text="Teilnehmer löschen" OnClick="deleteParticipant" runat="server" Font-Names="Verdana"/>
