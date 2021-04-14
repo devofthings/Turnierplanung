@@ -22,8 +22,9 @@ namespace Turnierplanung
             View = new View();
         }
 
-        public Zeugwart(string name, string nachname, string geburtstag, string beruf, string status) : base(name, nachname, geburtstag, beruf, status)
+        public Zeugwart(int id, string name, string nachname, string geburtstag, string beruf, string status) : base(id, name, nachname, geburtstag, beruf, status)
         {
+            ID = id;
             Vorname = name;
             Nachname = nachname;
             Geburtstag = geburtstag;

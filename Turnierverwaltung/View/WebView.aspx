@@ -27,6 +27,7 @@
             <h3>Teilnehmer ausgeben</h3>
             <asp:Table id="tbl_participants" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
                 <asp:TableHeaderRow>
+                    <asp:TableHeaderCell>ID</asp:TableHeaderCell>
                     <asp:TableHeaderCell>Name</asp:TableHeaderCell>
                     <asp:TableHeaderCell>Beruf</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
@@ -54,7 +55,6 @@
                 <asp:ListItem>Verletzt</asp:ListItem>
             </asp:RadioButtonList>
             <asp:Button id="btn_addParticipant" text="Teilnehmer hinzufügen" OnClick="addParticipant" runat="server" Font-Names="Verdana"/>
-
         </div>
         <div>
             <h3>Teilnehmer löschen</h3>

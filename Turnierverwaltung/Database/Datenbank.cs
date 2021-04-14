@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 namespace Turnierplanung
 {
     public class Datenbank
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         #region Attributes
         private string _ip;
         private string _db;
@@ -53,27 +55,26 @@ namespace Turnierplanung
                         switch(rdr[4])
                         {
                             case 1:
-                                tmp.Add(new Fussballspieler(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Fußballspieler", rdr[5].ToString()));
+                                tmp.Add(new Fussballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Fußballspieler", rdr[5].ToString()));
                                 break;
                             case 2:
-                                tmp.Add(new Tennisspieler(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Tennisspieler", rdr[5].ToString()));
+                                tmp.Add(new Tennisspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Tennisspieler", rdr[5].ToString()));
                                 break;
                             case 3:
-                                tmp.Add(new Handballspieler(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Handballspieler", rdr[5].ToString()));
+                                tmp.Add(new Handballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Handballspieler", rdr[5].ToString()));
                                 break;
                             case 4:
-                                tmp.Add(new Trainer(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Trainer", rdr[5].ToString()));
+                                tmp.Add(new Trainer(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Trainer", rdr[5].ToString()));
                                 break;
                             case 5:
-                                tmp.Add(new Physiologe(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Physiologe", rdr[5].ToString()));
+                                tmp.Add(new Physiologe(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Physiologe", rdr[5].ToString()));
                                 break;
                             case 6:
-                                tmp.Add(new Zeugwart(rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Zeugwart", rdr[5].ToString()));
+                                tmp.Add(new Zeugwart(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Zeugwart", rdr[5].ToString()));
                                 break;
                             default:
                                 break;
                         }
-                        System.Diagnostics.Debug.WriteLine(rdr[0].ToString() + ":" + rdr[1].ToString() + " " + rdr[2].ToString() + " " + rdr[3].ToString() + " " + rdr[4].ToString() + " " + rdr[5].ToString());
                     }
                     return tmp;
                 }
@@ -154,7 +155,7 @@ namespace Turnierplanung
                     connection.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = $"DELETE FROM participant WHERE id = {id};";
+                    cmd.CommandText = $"DELETE FROM participants WHERE id = {id};";
                     cmd.ExecuteNonQuery();
                 }
                 catch

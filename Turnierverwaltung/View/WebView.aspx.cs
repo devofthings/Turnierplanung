@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Linq;
 using Turnierplanung;
 
 namespace Turnierverwaltung.WebView
@@ -40,10 +39,13 @@ namespace Turnierverwaltung.WebView
             foreach (Teilnehmer t in Teilnehmer)
             {
                 TableRow r = new TableRow();
+                TableCell c0 = new TableCell();
                 TableCell c1 = new TableCell();
                 TableCell c2 = new TableCell();
+                c0.Text = t.ID.ToString();
                 c1.Text = t.Vorname + ' ' + t.Nachname;
                 c2.Text = t.Beruf;
+                r.Cells.Add(c0);
                 r.Cells.Add(c1);
                 r.Cells.Add(c2);
                 tbl_participants.Rows.Add(r);
@@ -57,25 +59,27 @@ namespace Turnierverwaltung.WebView
             string birthday = txt_birthday.Text;
             string health = health_status_list.SelectedValue;
             string selectedJob =job_list.SelectedValue;
+            Teilnehmer = Control.AlleTeilnehmerErhalten();
+            int id = Teilnehmer.Count();
             switch (selectedJob)
             {
                 case "1":
-                    Teilnehmer.Add(new Fussballspieler(firstname, lastname, birthday, "Fußballspieler", health));
+                    Teilnehmer.Add(new Fussballspieler(id, firstname, lastname, birthday, "Fußballspieler", health));
                     break;
                 case "2":
-                    Teilnehmer.Add(new Tennisspieler(firstname, lastname, birthday, "Tennisspieler", health));
+                    Teilnehmer.Add(new Tennisspieler(id, firstname, lastname, birthday, "Tennisspieler", health));
                     break;
                 case "3":
-                    Teilnehmer.Add(new Handballspieler(firstname, lastname, birthday, "Handballspieler", health));
+                    Teilnehmer.Add(new Handballspieler(id, firstname, lastname, birthday, "Handballspieler", health));
                     break;
                 case "4":
-                    Teilnehmer.Add(new Trainer(firstname, lastname, birthday, "Trainer", health));
+                    Teilnehmer.Add(new Trainer(id, firstname, lastname, birthday, "Trainer", health));
                     break;
                 case "5":
-                    Teilnehmer.Add(new Physiologe(firstname, lastname, birthday, "Physiologe", health));
+                    Teilnehmer.Add(new Physiologe(id, firstname, lastname, birthday, "Physiologe", health));
                     break;
                 case "6":
-                    Teilnehmer.Add(new Zeugwart(firstname, lastname, birthday, "Zeugwart", health));
+                    Teilnehmer.Add(new Zeugwart(id, firstname, lastname, birthday, "Zeugwart", health));
                     break;
                 default:
                     break;
@@ -85,7 +89,9 @@ namespace Turnierverwaltung.WebView
 
         public void deleteParticipant(object sender, EventArgs e)
         {
-            btn_deleteParticipant.Text = "Du hast mich gelöscht";
+            int idToDelete = Convert.ToInt32(txt_idToDelete.Text);
+            Control.TeilnehmerLoeschen(idToDelete);
+            getParticipants(sender, e);
         }
     }
 }

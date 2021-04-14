@@ -54,7 +54,6 @@ namespace Turnierplanung
             return DB.AendereTeilnehmer(id, t.Vorname, t.Nachname);
         }
 
-        // TODO: id erhalten
         public bool TeilnehmerLoeschen(int id)
         {
             return DB.LoescheTeilnehmer(id);

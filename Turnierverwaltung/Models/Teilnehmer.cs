@@ -3,6 +3,7 @@ namespace Turnierplanung
     public abstract class Teilnehmer
     {
         #region Attribute
+        private int _id;
         private string _vorname;
         private string _nachname;
         private string _alter;
@@ -11,23 +12,27 @@ namespace Turnierplanung
         #endregion
 
         #region Propertys
+        public int ID { get => _id; set => _id = value; }
         public string Vorname { get => _vorname; set => _vorname = value; }
         public string Nachname { get => _nachname; set => _nachname = value; }
         public string Geburtstag { get => _alter; set => _alter = value; }
         public string Beruf { get => _beruf; set => _beruf = value; }
         public string Status { get => _status; set => _status = value; }
+        public string Name { get; }
         #endregion
 
         #region Konstruktoren
         public Teilnehmer()
         {
+            ID = 0;
             Vorname = "Max";
             Nachname = "Mustermann";
             Geburtstag = "1900-01-01";
             Beruf = "Fußballspieler";
         }
-        public Teilnehmer(string vorname, string nachname, string geburtstag, string beruf, string status)
+        public Teilnehmer(int id, string vorname, string nachname, string geburtstag, string beruf, string status)
         {
+            ID = id;
             Vorname = vorname;
             Nachname = nachname;
             Geburtstag = geburtstag;
@@ -36,9 +41,15 @@ namespace Turnierplanung
         }
 
         // Mannschaftskonstruktor
-        public Teilnehmer(string name)
+        public Teilnehmer(int id, string name)
         {
+            ID = id;
             Vorname = name;
+        }
+
+        protected Teilnehmer(string name)
+        {
+            Name = name;
         }
         #endregion
 
