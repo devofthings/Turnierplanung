@@ -25,10 +25,20 @@ namespace Turnierplanung
             Beruf = beruf;
             Status = status;
         }
+
+        public Spieler(int id, string name, string nachname, string geburtstag, string beruf, string status, int tore) : this(id, name, nachname, geburtstag, beruf, status)
+        {
+            ID = id;
+            Vorname = name;
+            Nachname = nachname;
+            Geburtstag = geburtstag;
+            Beruf = beruf;
+            Status = status;
+        }
         #endregion
 
         #region Worker
-        
+
         #endregion
 
     }

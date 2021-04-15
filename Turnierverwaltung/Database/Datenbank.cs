@@ -55,7 +55,8 @@ namespace Turnierplanung
                         switch(rdr[4])
                         {
                             case 1:
-                                tmp.Add(new Fussballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Fußballspieler", rdr[5].ToString()));
+                                // TODO TORE PER INNER JOIN ERHALTEN
+                                tmp.Add(new Fussballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Fußballspieler", rdr[5].ToString(), 1));
                                 break;
                             case 2:
                                 tmp.Add(new Tennisspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Tennisspieler", rdr[5].ToString()));
@@ -266,6 +267,37 @@ namespace Turnierplanung
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
                     cmd.CommandText = $"DELETE FROM team WHERE id = {id};";
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+
+        public bool FuegeFussballspielerHinzu(string firstname, string lastname, string birthday, int job_id, string health_status, Fussballspieler f)
+        {
+            FuegeTeilnehmerHinzu(firstname, lastname, birthday, job_id, health_status);
+
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "INSERT INTO participants_properties (participant_id, property_id, property_value) VALUES (@participant_id, @property_id, @property_value)";
+                    cmd.Parameters.AddWithValue("@participant_id", 2);
+                    cmd.Parameters.AddWithValue("@property_id", 5);
+                    cmd.Parameters.AddWithValue("@property_value", f.GeschosseneTore);
                     cmd.ExecuteNonQuery();
                 }
                 catch

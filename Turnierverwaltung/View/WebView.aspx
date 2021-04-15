@@ -51,7 +51,7 @@
             <asp:Button id="btn_getAllParticipants" text="Gebe Alle Teilnehmer aus" OnClick="getParticipants" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">
-            <h3>Spieler hinzufügen</h3>
+            <h3>Teilnehmer hinzufügen</h3>
             <h4>Persönliche Informationen</h4>
             <asp:TextBox id="txt_participantFirstName" placeholder="Vorname" runat="server"/>
             <asp:TextBox id="txt_participantLastName" placeholder="Nachname" runat="server"/>
@@ -70,6 +70,15 @@
                 <asp:ListItem>Gesund</asp:ListItem>
                 <asp:ListItem>Verletzt</asp:ListItem>
             </asp:RadioButtonList>
+            <h4>Spezial Eigenschaften</h4>
+            <asp:TextBox id="txt_goals" placeholder="Geschossene Tore als Ganzzahl z.B. 21" runat="server"/>
+            <asp:TextBox id="txt_strength" placeholder="Schlagstärke als Ganzzahl" runat="server"/>
+            <h4>Starker Arm</h4>
+            <asp:RadioButtonList id="strong_arm_list" runat="server">
+                <asp:ListItem>Links</asp:ListItem>
+                <asp:ListItem>Rechts</asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:TextBox id="txt_amountTeams" placeholder="Anzahl Trainierter Teams" runat="server"/>
             <asp:Button id="btn_addParticipant" text="Teilnehmer hinzufügen" OnClick="addParticipant" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">

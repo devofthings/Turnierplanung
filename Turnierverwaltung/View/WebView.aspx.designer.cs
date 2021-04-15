@@ -87,6 +87,42 @@ namespace Turnierverwaltung.WebView
         protected global::System.Web.UI.WebControls.RadioButtonList health_status_list;
 
         /// <summary>
+        /// txt_goals-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_goals;
+
+        /// <summary>
+        /// txt_strength-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_strength;
+
+        /// <summary>
+        /// strong_arm_list-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList strong_arm_list;
+
+        /// <summary>
+        /// txt_amountTeams-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_amountTeams;
+
+        /// <summary>
         /// btn_addParticipant-Steuerelement
         /// </summary>
         /// <remarks>

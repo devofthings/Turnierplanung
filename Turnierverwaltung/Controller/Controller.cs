@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Turnierplanung
@@ -45,7 +46,24 @@ namespace Turnierplanung
 
         public bool TeilnehmerHinzufuegen(Teilnehmer t)
         {
-            return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+            switch (t.GebeJobIdAus(t.Beruf))
+            {
+                case 1:
+                    Fussballspieler f = (Fussballspieler)t;
+                    return DB.FuegeFussballspielerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status, f);
+                case 2:
+                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                case 3:
+                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                case 4:
+                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                case 5:
+                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                case 6:
+                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                default:
+                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+            }
         }
 
         // TODO: id erhalten

@@ -58,13 +58,14 @@ namespace Turnierverwaltung.WebView
             string lastname = txt_participantLastName.Text;
             string birthday = txt_birthday.Text;
             string health = health_status_list.SelectedValue;
-            string selectedJob =job_list.SelectedValue;
+            string selectedJob = job_list.SelectedValue;
+            int goals = Convert.ToInt32(txt_goals.Text);
             Teilnehmer = Control.AlleTeilnehmerErhalten();
             int id = Teilnehmer.Count();
             switch (selectedJob)
             {
                 case "1":
-                    Teilnehmer.Add(new Fussballspieler(id, firstname, lastname, birthday, "Fußballspieler", health));
+                    Teilnehmer.Add(new Fussballspieler(id, firstname, lastname, birthday, "Fußballspieler", health, goals));
                     break;
                 case "2":
                     Teilnehmer.Add(new Tennisspieler(id, firstname, lastname, birthday, "Tennisspieler", health));
@@ -85,6 +86,7 @@ namespace Turnierverwaltung.WebView
                     break;
             }
             Control.TeilnehmerHinzufuegen(Teilnehmer.Last());
+            Teilnehmer = Control.AlleTeilnehmerErhalten();
         }
 
         public void changeParticipant(object sender, EventArgs e)
@@ -94,12 +96,13 @@ namespace Turnierverwaltung.WebView
             string birthday = txt_birthday.Text;
             string health = health_status_list.SelectedValue;
             string selectedJob = job_list.SelectedValue;
+            int goals = Convert.ToInt32(txt_goals);
             Teilnehmer = Control.AlleTeilnehmerErhalten();
             int id = Teilnehmer.Count();
             switch (selectedJob)
             {
                 case "1":
-                    Teilnehmer.Add(new Fussballspieler(id, firstname, lastname, birthday, "Fußballspieler", health));
+                    Teilnehmer.Add(new Fussballspieler(id, firstname, lastname, birthday, "Fußballspieler", health, goals));
                     break;
                 case "2":
                     Teilnehmer.Add(new Tennisspieler(id, firstname, lastname, birthday, "Tennisspieler", health));
