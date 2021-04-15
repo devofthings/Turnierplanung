@@ -33,7 +33,7 @@ namespace Turnierverwaltung.WebView
         {
         }
 
-        public void getParticipants(object sender, EventArgs e)
+        public void GetParticipants(object sender, EventArgs e)
         {
             Teilnehmer = Control.AlleTeilnehmerErhalten();
             foreach (Teilnehmer t in Teilnehmer)
@@ -52,29 +52,32 @@ namespace Turnierverwaltung.WebView
             }
         }
 
-        public void addParticipant(object sender, EventArgs e)
+        public void AddParticipant(object sender, EventArgs e)
         {
             string firstname = txt_participantFirstName.Text;
             string lastname = txt_participantLastName.Text;
             string birthday = txt_birthday.Text;
             string health = health_status_list.SelectedValue;
             string selectedJob = job_list.SelectedValue;
-            int goals = Convert.ToInt32(txt_goals.Text);
             Teilnehmer = Control.AlleTeilnehmerErhalten();
-            int id = Teilnehmer.Count();
+            int id = Teilnehmer.Last().ID + 1;
             switch (selectedJob)
             {
                 case "1":
+                    int goals = Convert.ToInt32(txt_goals.Text);
                     Teilnehmer.Add(new Fussballspieler(id, firstname, lastname, birthday, "Fußballspieler", health, goals));
                     break;
                 case "2":
-                    Teilnehmer.Add(new Tennisspieler(id, firstname, lastname, birthday, "Tennisspieler", health));
+                    int strength = Convert.ToInt32(txt_strength.Text);
+                    Teilnehmer.Add(new Tennisspieler(id, firstname, lastname, birthday, "Tennisspieler", health, strength));
                     break;
                 case "3":
-                    Teilnehmer.Add(new Handballspieler(id, firstname, lastname, birthday, "Handballspieler", health));
+                    string strong_arm = strong_arm_list.SelectedValue;
+                    Teilnehmer.Add(new Handballspieler(id, firstname, lastname, birthday, "Handballspieler", health, strong_arm));
                     break;
                 case "4":
-                    Teilnehmer.Add(new Trainer(id, firstname, lastname, birthday, "Trainer", health));
+                    int trainedTeams = Convert.ToInt32(txt_amountTeams.Text);
+                    Teilnehmer.Add(new Trainer(id, firstname, lastname, birthday, "Trainer", health, trainedTeams));
                     break;
                 case "5":
                     Teilnehmer.Add(new Physiologe(id, firstname, lastname, birthday, "Physiologe", health));
@@ -89,7 +92,7 @@ namespace Turnierverwaltung.WebView
             Teilnehmer = Control.AlleTeilnehmerErhalten();
         }
 
-        public void changeParticipant(object sender, EventArgs e)
+        public void ChangeParticipant(object sender, EventArgs e)
         {
             string firstname = txt_participantFirstName.Text;
             string lastname = txt_participantLastName.Text;
@@ -101,17 +104,18 @@ namespace Turnierverwaltung.WebView
             int id = Teilnehmer.Count();
             switch (selectedJob)
             {
+                //TODO PSEUDO WERTE AUSTAUSCHEN BEI CASE 1-4
                 case "1":
                     Teilnehmer.Add(new Fussballspieler(id, firstname, lastname, birthday, "Fußballspieler", health, goals));
                     break;
                 case "2":
-                    Teilnehmer.Add(new Tennisspieler(id, firstname, lastname, birthday, "Tennisspieler", health));
+                    Teilnehmer.Add(new Tennisspieler(id, firstname, lastname, birthday, "Tennisspieler", health, 1));
                     break;
                 case "3":
-                    Teilnehmer.Add(new Handballspieler(id, firstname, lastname, birthday, "Handballspieler", health));
+                    Teilnehmer.Add(new Handballspieler(id, firstname, lastname, birthday, "Handballspieler", health, "links"));
                     break;
                 case "4":
-                    Teilnehmer.Add(new Trainer(id, firstname, lastname, birthday, "Trainer", health));
+                    Teilnehmer.Add(new Trainer(id, firstname, lastname, birthday, "Trainer", health, 1));
                     break;
                 case "5":
                     Teilnehmer.Add(new Physiologe(id, firstname, lastname, birthday, "Physiologe", health));
@@ -124,11 +128,11 @@ namespace Turnierverwaltung.WebView
             }
             Control.TeilnehmerHinzufuegen(Teilnehmer.Last());
         }
-        public void deleteParticipant(object sender, EventArgs e)
+        public void DeleteParticipant(object sender, EventArgs e)
         {
             int idToDelete = Convert.ToInt32(txt_idToDelete.Text);
             Control.TeilnehmerLoeschen(idToDelete);
-            getParticipants(sender, e);
+            GetParticipants(sender, e);
         }
     }
 }

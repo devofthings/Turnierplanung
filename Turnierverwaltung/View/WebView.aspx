@@ -48,7 +48,7 @@
                     <asp:TableHeaderCell>Beruf</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
             </asp:Table>
-            <asp:Button id="btn_getAllParticipants" text="Gebe Alle Teilnehmer aus" OnClick="getParticipants" runat="server" Font-Names="Verdana"/>
+            <asp:Button id="btn_getAllParticipants" text="Gebe Alle Teilnehmer aus" OnClick="GetParticipants" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">
             <h3>Teilnehmer hinzufügen</h3>
@@ -79,7 +79,7 @@
                 <asp:ListItem>Rechts</asp:ListItem>
             </asp:RadioButtonList>
             <asp:TextBox id="txt_amountTeams" placeholder="Anzahl Trainierter Teams" runat="server"/>
-            <asp:Button id="btn_addParticipant" text="Teilnehmer hinzufügen" OnClick="addParticipant" runat="server" Font-Names="Verdana"/>
+            <asp:Button id="btn_addParticipant" text="Teilnehmer hinzufügen" OnClick="AddParticipant" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">
             <h3>Teilnehmer ändern</h3>
@@ -102,12 +102,12 @@
                 <asp:ListItem>Gesund</asp:ListItem>
                 <asp:ListItem>Verletzt</asp:ListItem>
             </asp:RadioButtonList>
-            <asp:Button id="btn_changeParticipant" text="Teilnehmer ändern" OnClick="changeParticipant" runat="server" Font-Names="Verdana"/>
+            <asp:Button id="btn_changeParticipant" text="Teilnehmer ändern" OnClick="ChangeParticipant" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">
             <h3>Teilnehmer löschen</h3>
             <asp:TextBox id="txt_idToDelete" placeholder="ID" runat="server"/>
-            <asp:Button id="btn_deleteParticipant" text="Teilnehmer löschen" OnClick="deleteParticipant" runat="server" Font-Names="Verdana"/>
+            <asp:Button id="btn_deleteParticipant" text="Teilnehmer löschen" OnClick="DeleteParticipant" runat="server" Font-Names="Verdana"/>
         </div>
     </form>
 </body>

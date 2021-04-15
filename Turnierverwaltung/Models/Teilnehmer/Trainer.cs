@@ -6,11 +6,11 @@ namespace Turnierplanung
     public class Trainer : Teilnehmer
     {
         #region Attribute
-        private View view;
+        private int _trainierteMannschaften;
         #endregion
 
         #region Propertys
-        public View View { get => view; set => view = value; }
+        public int TrainierteMannschaften { get => _trainierteMannschaften; set => _trainierteMannschaften = value; }
         #endregion
 
         #region Konstruktoren
@@ -20,10 +20,11 @@ namespace Turnierplanung
             Nachname = "Mustermann";
             Geburtstag = "1900-01-01";
             Beruf = "Trainer";
-            View = new View();
+            Status = "Gesund";
+            TrainierteMannschaften = 1;
         }
 
-        public Trainer(int id, string name, string nachname, string geburtstag, string beruf, string status) : base(id, name, nachname, geburtstag, beruf, status)
+        public Trainer(int id, string name, string nachname, string geburtstag, string beruf, string status, int anzahlMannschaften) : base(id, name, nachname, geburtstag, beruf, status)
         {
             ID = id;
             Vorname = name;
@@ -31,21 +32,14 @@ namespace Turnierplanung
             Geburtstag = geburtstag;
             Beruf = beruf;
             Status = status;
+            TrainierteMannschaften = anzahlMannschaften;
         }
         #endregion
 
         #region Worker
-        public void Trainiere()
-        {
-            View.LeseTextEin($"{Vorname} trainiert seine Mannschaft.");
-            View.GebeTextAus();
-        }
-
-       
-
         public override bool InDatenbankSpeichern(Datenbank db)
         {
-            return db.FuegeTeilnehmerHinzu(Vorname, Nachname, Geburtstag, 4, Status);
+            return db.FuegeTeilnehmerHinzu(ID, Vorname, Nachname, Geburtstag, 4, Status);
         }
 
         public override bool InDatenbankAendern(Datenbank db)

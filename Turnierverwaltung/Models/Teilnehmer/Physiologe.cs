@@ -33,7 +33,7 @@ namespace Turnierplanung
 
         public override bool InDatenbankSpeichern(Datenbank db)
         {
-            return db.FuegeTeilnehmerHinzu(Vorname, Nachname, Geburtstag, 5, Status);
+            return db.FuegeTeilnehmerHinzu(ID, Vorname, Nachname, Geburtstag, 5, Status);
         }
 
         public override bool InDatenbankAendern(Datenbank db)

@@ -3,9 +3,11 @@
     public class Tennisspieler : Spieler
     {
         #region Attribute
+        private int _schlagStaerke;
         #endregion
 
         #region Propertys
+        public int SchlagStaerke { get => _schlagStaerke; set => _schlagStaerke = value; }
         #endregion
 
         #region Konstruktoren
@@ -15,9 +17,11 @@
             Nachname = "Mustermann";
             Geburtstag = "1900-01-01";
             Beruf = "Tennisspieler";
+            Status = "Gesund";
+            SchlagStaerke = 10;
         }
 
-        public Tennisspieler(int id, string name, string nachname, string geburtstag, string beruf, string status) : base(id, name, nachname, geburtstag, beruf, status)
+        public Tennisspieler(int id, string name, string nachname, string geburtstag, string beruf, string status, int staerke) : base(id, name, nachname, geburtstag, beruf, status)
         {
             ID = id;
             Vorname = name;
@@ -25,6 +29,7 @@
             Geburtstag = geburtstag;
             Beruf = beruf;
             Status = status;
+            SchlagStaerke = staerke;
         }
         #endregion
 
@@ -32,7 +37,7 @@
 
         public override bool InDatenbankSpeichern(Datenbank db)
         {
-            return db.FuegeTeilnehmerHinzu(Vorname, Nachname, Geburtstag, 2, Status);
+            return db.FuegeTeilnehmerHinzu(ID, Vorname, Nachname, Geburtstag, 2, Status);
         }
 
         public override bool InDatenbankAendern(Datenbank db)

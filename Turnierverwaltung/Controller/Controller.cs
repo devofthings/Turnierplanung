@@ -49,20 +49,23 @@ namespace Turnierplanung
             switch (t.GebeJobIdAus(t.Beruf))
             {
                 case 1:
-                    Fussballspieler f = (Fussballspieler)t;
-                    return DB.FuegeFussballspielerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status, f);
+                    Fussballspieler fussball = (Fussballspieler)t;
+                    return DB.FuegeFussballspielerHinzu(t.ID, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status, fussball);
                 case 2:
-                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                    Tennisspieler tennis = (Tennisspieler)t;
+                    return DB.FuegeTennisspielerHinzu(t.ID, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status, tennis);
                 case 3:
-                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                    Handballspieler handball = (Handballspieler)t;
+                    return DB.FuegeHandballspielerHinzu(t.ID, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status, handball);
                 case 4:
-                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                    Trainer trainer = (Trainer)t;
+                    return DB.FuegeTrainerHinzu(t.ID, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status, trainer);
                 case 5:
-                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                    return DB.FuegeTeilnehmerHinzu(t.ID, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
                 case 6:
-                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                    return DB.FuegeTeilnehmerHinzu(t.ID, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
                 default:
-                    return DB.FuegeTeilnehmerHinzu(t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
+                    return DB.FuegeTeilnehmerHinzu(t.ID, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
             }
         }
 

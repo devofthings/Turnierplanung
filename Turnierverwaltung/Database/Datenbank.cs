@@ -6,7 +6,6 @@ namespace Turnierplanung
 {
     public class Datenbank
     {
-        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         #region Attributes
         private string _ip;
         private string _db;
@@ -59,13 +58,16 @@ namespace Turnierplanung
                                 tmp.Add(new Fussballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Fußballspieler", rdr[5].ToString(), 1));
                                 break;
                             case 2:
-                                tmp.Add(new Tennisspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Tennisspieler", rdr[5].ToString()));
+                                // TODO Stärke PER INNER JOIN ERHALTEN
+                                tmp.Add(new Tennisspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Tennisspieler", rdr[5].ToString(), 1));
                                 break;
                             case 3:
-                                tmp.Add(new Handballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Handballspieler", rdr[5].ToString()));
+                                // TODO Arm PER INNER JOIN ERHALTEN
+                                tmp.Add(new Handballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Handballspieler", rdr[5].ToString(), "Links"));
                                 break;
                             case 4:
-                                tmp.Add(new Trainer(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Trainer", rdr[5].ToString()));
+                                // TODO Anzahl PER INNER JOIN ERHALTEN
+                                tmp.Add(new Trainer(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Trainer", rdr[5].ToString(), 1));
                                 break;
                             case 5:
                                 tmp.Add(new Physiologe(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Physiologe", rdr[5].ToString()));
@@ -87,7 +89,7 @@ namespace Turnierplanung
             }
         }
 
-        public bool FuegeTeilnehmerHinzu(string firstname, string lastname, string birthday, int job_id, string health_status)
+        public bool FuegeTeilnehmerHinzu(int id, string firstname, string lastname, string birthday, int job_id, string health_status)
         {
             string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
             // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
@@ -99,7 +101,8 @@ namespace Turnierplanung
 
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = "INSERT INTO participants (firstname, lastname, birthday, job_id, health_status) VALUES (@firstname, @lastname, @birthday, @job, @health)";
+                    cmd.CommandText = "INSERT INTO participants (id, firstname, lastname, birthday, job_id, health_status) VALUES (@id, @firstname, @lastname, @birthday, @job, @health)";
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.Parameters.AddWithValue("@firstname", firstname);
                     cmd.Parameters.AddWithValue("@lastname", lastname);
                     cmd.Parameters.AddWithValue("@birthday", birthday);
@@ -280,9 +283,9 @@ namespace Turnierplanung
             }
         }
 
-        public bool FuegeFussballspielerHinzu(string firstname, string lastname, string birthday, int job_id, string health_status, Fussballspieler f)
+        public bool FuegeFussballspielerHinzu(int id, string firstname, string lastname, string birthday, int job_id, string health_status, Fussballspieler f)
         {
-            FuegeTeilnehmerHinzu(firstname, lastname, birthday, job_id, health_status);
+            FuegeTeilnehmerHinzu(id, firstname, lastname, birthday, job_id, health_status);
 
             string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
             // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
@@ -295,9 +298,99 @@ namespace Turnierplanung
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
                     cmd.CommandText = "INSERT INTO participants_properties (participant_id, property_id, property_value) VALUES (@participant_id, @property_id, @property_value)";
-                    cmd.Parameters.AddWithValue("@participant_id", 2);
+                    cmd.Parameters.AddWithValue("@participant_id", id);
                     cmd.Parameters.AddWithValue("@property_id", 5);
                     cmd.Parameters.AddWithValue("@property_value", f.GeschosseneTore);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+        public bool FuegeTennisspielerHinzu(int id, string firstname, string lastname, string birthday, int job_id, string health_status, Tennisspieler t)
+        {
+            FuegeTeilnehmerHinzu(id, firstname, lastname, birthday, job_id, health_status);
+
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "INSERT INTO participants_properties (participant_id, property_id, property_value) VALUES (@participant_id, @property_id, @property_value)";
+                    cmd.Parameters.AddWithValue("@participant_id", id);
+                    cmd.Parameters.AddWithValue("@property_id", 6);
+                    cmd.Parameters.AddWithValue("@property_value", t.SchlagStaerke);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+        public bool FuegeHandballspielerHinzu(int id, string firstname, string lastname, string birthday, int job_id, string health_status, Handballspieler h)
+        {
+            FuegeTeilnehmerHinzu(id, firstname, lastname, birthday, job_id, health_status);
+
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "INSERT INTO participants_properties (participant_id, property_id, property_value) VALUES (@participant_id, @property_id, @property_value)";
+                    cmd.Parameters.AddWithValue("@participant_id", id);
+                    cmd.Parameters.AddWithValue("@property_id", 7);
+                    cmd.Parameters.AddWithValue("@property_value", h.StarkerArm);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+        public bool FuegeTrainerHinzu(int id, string firstname, string lastname, string birthday, int job_id, string health_status, Trainer t)
+        {
+            FuegeTeilnehmerHinzu(id, firstname, lastname, birthday, job_id, health_status);
+
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "INSERT INTO participants_properties (participant_id, property_id, property_value) VALUES (@participant_id, @property_id, @property_value)";
+                    cmd.Parameters.AddWithValue("@participant_id", id);
+                    cmd.Parameters.AddWithValue("@property_id", 8);
+                    cmd.Parameters.AddWithValue("@property_value", t.TrainierteMannschaften);
                     cmd.ExecuteNonQuery();
                 }
                 catch
