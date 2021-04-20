@@ -72,7 +72,7 @@ namespace Turnierplanung
         // TODO: id erhalten
         public bool TeilnehmerAendern(int id, Teilnehmer t)
         {
-            return DB.AendereTeilnehmer(id, t.Vorname, t.Nachname);
+            return DB.AendereTeilnehmer(id, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
         }
 
         public bool TeilnehmerLoeschen(int id)

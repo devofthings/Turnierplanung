@@ -121,7 +121,7 @@ namespace Turnierplanung
             }
         }
 
-        public bool AendereTeilnehmer(int id, string name, string surname)
+        public bool AendereTeilnehmer(int id, string firstname, string lastname, string birthday, int job_id, string health_status)
         {
             string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
             // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
@@ -132,9 +132,12 @@ namespace Turnierplanung
                     connection.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = $"UPDATE participant SET name = @name, surname = @surname WHERE id = {id};";
-                    cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@surname", surname);
+                    cmd.CommandText = $"UPDATE participants SET firstname = @firstname, lastname = @lastname, birthday = @birthday, job_id = @job, health_status = @health WHERE id = {id};";
+                    cmd.Parameters.AddWithValue("@firstname", firstname);
+                    cmd.Parameters.AddWithValue("@lastname", lastname);
+                    cmd.Parameters.AddWithValue("@birthday", birthday);
+                    cmd.Parameters.AddWithValue("@job", job_id);
+                    cmd.Parameters.AddWithValue("@health", health_status);
                     cmd.ExecuteNonQuery();
                 }
                 catch

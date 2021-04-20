@@ -44,7 +44,7 @@
 
         public override bool InDatenbankAendern(Datenbank db)
         {
-            return db.AendereTeilnehmer(1, "Test", "Lauf");
+            return db.AendereTeilnehmer(ID, Vorname, Nachname, Geburtstag, GebeJobIdAus(Beruf), Status);
         }
 
         public override bool InDatenbankLoeschen(Datenbank db)

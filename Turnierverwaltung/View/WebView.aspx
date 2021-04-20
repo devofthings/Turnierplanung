@@ -84,6 +84,7 @@
         <div class="border">
             <h3>Teilnehmer ändern</h3>
             <asp:TextBox id="txt_idToChange" placeholder="ID" runat="server"/>
+            <asp:Button id="btn_loadParticipantData" text="Teilnehmerdaten erhalten" OnClick="GetParticipantByID" runat="server" Font-Names="Verdana"/>
             <h4>Persönliche Informationen</h4>
             <asp:TextBox id="txt_changeParticipantFirstName" placeholder="Vorname" runat="server"/>
             <asp:TextBox id="txt_changeParticipantLastName" placeholder="Nachname" runat="server"/>

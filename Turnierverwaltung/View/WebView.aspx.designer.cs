@@ -141,6 +141,15 @@ namespace Turnierverwaltung.WebView
         protected global::System.Web.UI.WebControls.TextBox txt_idToChange;
 
         /// <summary>
+        /// btn_loadParticipantData-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_loadParticipantData;
+
+        /// <summary>
         /// txt_changeParticipantFirstName-Steuerelement
         /// </summary>
         /// <remarks>
