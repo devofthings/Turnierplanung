@@ -5,12 +5,10 @@ namespace Turnierplanung
     public class Mannschaft : Teilnehmer
     {
         #region Attribute
-        private View _view;
         private List<Spieler> _kader;
         #endregion
 
         #region Propertys
-        public View View { get => _view; set => _view = value; }
         public List<Spieler> Kader { get => _kader; set => _kader = value; }
         #endregion
 
@@ -20,23 +18,22 @@ namespace Turnierplanung
         {
             Vorname = "Borussia Dortmund";
             Geburtstag = "1900-01-01";
-            View = new View();
             Kader = new List<Spieler>();
         }
 
         // Mit bestehender Mannschaft
-        public Mannschaft(string name, string alter, List<Spieler> kader) : base(name)
+        public Mannschaft(int id, string name, List<Spieler> kader) : base(id, name)
         {
+            ID = id;
             Vorname = name;
-            View = new View();
             Kader = kader;
         }
 
         // Neue Mannschaft
-        public Mannschaft(string name) : base()
+        public Mannschaft(int id, string name) : base()
         {
+            ID = id;
             Vorname = name;
-            View = new View();
             Kader = new List<Spieler>();
         }
         #endregion
@@ -60,8 +57,7 @@ namespace Turnierplanung
         }
         public void GebeGroesseDesKadersAus()
         {
-            View.LeseTextEin($"Wir haben {Kader.Count} Spieler in unserer Mannschaft.");
-            View.GebeTextAus();
+           
         }
 
 

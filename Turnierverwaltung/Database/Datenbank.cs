@@ -187,13 +187,13 @@ namespace Turnierplanung
                     connection.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = $"SELECT * FROM team";
+                    cmd.CommandText = $"SELECT * FROM teams";
                     List<Mannschaft> tmp = new List<Mannschaft>();
                     MySqlDataReader rdr = cmd.ExecuteReader();
 
                     while (rdr.Read())
                     {
-                        tmp.Add(new Mannschaft((string)rdr[1]));
+                        tmp.Add(new Mannschaft(Convert.ToInt32(rdr[0]), (string)rdr[1]));
                     }
                     rdr.Close();
                     return tmp;

@@ -36,6 +36,11 @@ namespace Turnierplanung
             Teilnehmer = teilnehmer;
             DB = new Datenbank(ip, db, user, password);
         }
+        public Controller(List<Mannschaft> mannschaften, string ip, string db, string user, string password)
+        {
+            Mannschaften = mannschaften;
+            DB = new Datenbank(ip, db, user, password);
+        }
         #endregion
 
         #region Worker

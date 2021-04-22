@@ -12,19 +12,19 @@ namespace Turnierverwaltung.View
     {
         #region Attributes
         private Controller _control;
-        private List<Teilnehmer> _teams;
+        private List<Mannschaft> _teams;
         #endregion
 
         #region Properties
         public Controller Control { get => _control; set => _control = value; }
-        public List<Teilnehmer> Teams { get => _teams; set => _teams = value; }
+        public List<Mannschaft> Teams { get => _teams; set => _teams = value; }
         #endregion
 
         #region Contructors
         public Mannschaftsverwaltung()
         {
             Control = new Controller(Teams, "127.0.0.1", "tournament", "root", "");
-            Teams = new List<Teilnehmer>();
+            Teams = new List<Mannschaft>();
         }
         #endregion
         public void Page_Load(object sender, EventArgs e)
@@ -32,19 +32,16 @@ namespace Turnierverwaltung.View
         }
         public void GetTeams(object sender, EventArgs e)
         {
-            Teams = Control.AlleTeilnehmerErhalten();
-            foreach (Teilnehmer t in Teams)
+            Teams = Control.AlleMannschaftenErhalten();
+            foreach (Mannschaft m in Teams)
             {
                 TableRow r = new TableRow();
                 TableCell c0 = new TableCell();
                 TableCell c1 = new TableCell();
-                TableCell c2 = new TableCell();
-                c0.Text = t.ID.ToString();
-                c1.Text = t.Vorname + ' ' + t.Nachname;
-                c2.Text = t.Beruf;
+                c0.Text = m.ID.ToString();
+                c1.Text = m.Vorname;
                 r.Cells.Add(c0);
                 r.Cells.Add(c1);
-                r.Cells.Add(c2);
                 tbl_teams.Rows.Add(r);
             }
         }
