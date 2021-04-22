@@ -218,9 +218,8 @@ namespace Turnierplanung
 
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = "INSERT INTO team (name, age) VALUES (@name, @age)";
+                    cmd.CommandText = "INSERT INTO teams (name) VALUES (@name)";
                     cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@age", age);
                     cmd.ExecuteNonQuery();
                 }
                 catch
@@ -234,7 +233,7 @@ namespace Turnierplanung
             }
         }
 
-        public bool AendereMannschaft(int id, string name, string age)
+        public bool AendereMannschaft(int id, string name)
         {
             string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
             // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
@@ -245,9 +244,8 @@ namespace Turnierplanung
                     connection.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = $"UPDATE team SET name = @name, age = @age WHERE id = {id};";
+                    cmd.CommandText = $"UPDATE teams SET name = @name WHERE id = {id};";
                     cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@age", age);
                     cmd.ExecuteNonQuery();
                 }
                 catch
@@ -272,7 +270,7 @@ namespace Turnierplanung
                     connection.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = $"DELETE FROM team WHERE id = {id};";
+                    cmd.CommandText = $"DELETE FROM teams WHERE id = {id};";
                     cmd.ExecuteNonQuery();
                 }
                 catch

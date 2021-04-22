@@ -50,6 +50,25 @@
             </asp:Table>
             <asp:Button ID="btn_getAllTeams" text="Gebe Alle Mannschaften aus" OnClick="GetTeams" runat="server" Font-Names="Verdana"/>
         </div>
+        <div class="border">
+            <h3>Mannschaft hinzufügen</h3>
+            <h4>Informationen</h4>
+            <asp:TextBox id="txt_teamName" placeholder="Mannschaftsname" runat="server"/>
+            <asp:Button id="btn_addteam" text="Teilnehmer hinzufügen" OnClick="AddTeam" runat="server" Font-Names="Verdana"/>
+        </div>
+        <div class="border">
+            <h3>Mannschaft ändern</h3>
+            <asp:TextBox id="txt_idToChange" placeholder="ID" runat="server"/>
+            <asp:Button id="btn_loadTeamData" text="Teilnehmerdaten erhalten" OnClick="GetTeamByID" runat="server" Font-Names="Verdana"/>
+            <h4>Informationen</h4>
+            <asp:TextBox id="txt_changeTeamName" placeholder="Mannschaftsname" runat="server"/>
+            <asp:Button id="btn_changeTeam" text="Mannschaft ändern" OnClick="ChangeTeam" runat="server" Font-Names="Verdana"/>
+        </div>
+        <div class="border">
+            <h3>Mannschaft löschen</h3>
+            <asp:TextBox id="txt_idToDelete" placeholder="ID" runat="server"/>
+            <asp:Button id="btn_deleteParticipant" text="Teilnehmer löschen" OnClick="DeleteTeam" runat="server" Font-Names="Verdana"/>
+        </div>
     </form>
 </body>
 </html>

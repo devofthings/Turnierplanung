@@ -90,7 +90,7 @@ namespace Turnierplanung
             return DB.AlleMannschaftenAusgeben();
         }
 
-        public bool MannschaftHinzufügen(Mannschaft m)
+        public bool MannschaftHinzufuegen(Mannschaft m)
         {
             return DB.FuegeMannschaftHinzu(m.Vorname, m.Geburtstag);
         }
@@ -98,7 +98,7 @@ namespace Turnierplanung
         // TODO: id erhalten
         public bool MannschaftAendern(int id, Mannschaft m)
         {
-            return DB.AendereMannschaft(id, m.Vorname, m.Geburtstag);
+            return DB.AendereMannschaft(id, m.Vorname);
         }
 
         // TODO: id erhalten

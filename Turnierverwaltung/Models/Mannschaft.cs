@@ -68,7 +68,7 @@ namespace Turnierplanung
 
         public override bool InDatenbankAendern(Datenbank db)
         {
-            return db.AendereMannschaft(1, "Test", "1900-01-01");
+            return db.AendereMannschaft(1, "Test");
         }
 
         public override bool InDatenbankLoeschen(Datenbank db)

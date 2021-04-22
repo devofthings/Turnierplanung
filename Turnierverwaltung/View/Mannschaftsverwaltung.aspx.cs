@@ -45,5 +45,43 @@ namespace Turnierverwaltung.View
                 tbl_teams.Rows.Add(r);
             }
         }
+
+        public void AddTeam(object sender, EventArgs e)
+        {
+            Teams = Control.AlleMannschaftenErhalten();
+            string name = txt_teamName.Text;
+            int id = Teams.Last().ID + 1;
+            Teams.Add(new Mannschaft(id, name));
+            Control.MannschaftHinzufuegen(Teams.Last());
+            GetTeams(sender, e);
+        }
+
+        public void GetTeamByID(object sender, EventArgs e)
+        {
+            Teams = Control.AlleMannschaftenErhalten();
+            int id = Convert.ToInt32(txt_idToChange.Text);
+            int index = Teams.FindIndex(t => t.ID == id);
+            Mannschaft teamToChange = Teams[index];
+            txt_changeTeamName.Text = teamToChange.Vorname;
+            GetTeams(sender, e);
+        }
+
+        public void ChangeTeam(object sender, EventArgs e)
+        {
+            Teams = Control.AlleMannschaftenErhalten();
+            int id = Convert.ToInt32(txt_idToChange.Text);
+            int index = Teams.FindIndex(t => t.ID == id);
+            Mannschaft team = Teams[index];
+            team.Vorname = txt_changeTeamName.Text;
+            Control.MannschaftAendern(id, team);
+            GetTeams(sender, e);
+        }
+
+        public void DeleteTeam(object sender, EventArgs e)
+        {
+            int idToDelete = Convert.ToInt32(txt_idToDelete.Text);
+            Control.MannschaftLoeschen(idToDelete);
+            GetTeams(sender, e);
+        }
     }
 }
