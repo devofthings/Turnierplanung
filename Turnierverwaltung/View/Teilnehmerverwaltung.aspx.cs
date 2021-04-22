@@ -7,10 +7,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Turnierplanung;
 
-namespace Turnierverwaltung.WebView
+namespace Turnierverwaltung.View
 {
     
-    public partial class WebView : System.Web.UI.Page
+    public partial class Teilnehmerverwaltung : System.Web.UI.Page
     {
         #region Attributes
         private Controller _control;
@@ -23,7 +23,7 @@ namespace Turnierverwaltung.WebView
         #endregion
 
         #region Contructors
-        public WebView ()
+        public Teilnehmerverwaltung()
         {
             Control = new Controller(Teilnehmer, "127.0.0.1", "tournament", "root", "");
             Teilnehmer = new List<Teilnehmer>();
@@ -82,7 +82,6 @@ namespace Turnierverwaltung.WebView
                     
                     break;
                 case "4":
-                    txt_changeAmountTeams = Convert.ToInt32(participantToChange.);
                     break;
                 default:
                     break;

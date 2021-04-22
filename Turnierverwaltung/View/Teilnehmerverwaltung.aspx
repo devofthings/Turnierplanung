@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebView.aspx.cs" Inherits="Turnierverwaltung.WebView.WebView" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Teilnehmerverwaltung.aspx.cs" Inherits="Turnierverwaltung.View.Teilnehmerverwaltung" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

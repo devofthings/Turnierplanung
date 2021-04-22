@@ -204,7 +204,9 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="View\WebView.aspx" />
+    <Content Include="View\Gateway.aspx" />
+    <Content Include="View\Mannschaftsverwaltung.aspx" />
+    <Content Include="View\Teilnehmerverwaltung.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -249,12 +251,26 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="View\WebView.aspx.cs">
-      <DependentUpon>WebView.aspx</DependentUpon>
+    <Compile Include="View\Gateway.aspx.cs">
+      <DependentUpon>Gateway.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\WebView.aspx.designer.cs">
-      <DependentUpon>WebView.aspx</DependentUpon>
+    <Compile Include="View\Gateway.aspx.designer.cs">
+      <DependentUpon>Gateway.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Mannschaftsverwaltung.aspx.cs">
+      <DependentUpon>Mannschaftsverwaltung.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Mannschaftsverwaltung.aspx.designer.cs">
+      <DependentUpon>Mannschaftsverwaltung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Teilnehmerverwaltung.aspx.cs">
+      <DependentUpon>Teilnehmerverwaltung.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Teilnehmerverwaltung.aspx.designer.cs">
+      <DependentUpon>Teilnehmerverwaltung.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\View.cs" />
   </ItemGroup>

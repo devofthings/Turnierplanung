@@ -7,11 +7,11 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace Turnierverwaltung.WebView
+namespace Turnierverwaltung.View
 {
 
 
-    public partial class WebView
+    public partial class Teilnehmerverwaltung
     {
 
         /// <summary>
