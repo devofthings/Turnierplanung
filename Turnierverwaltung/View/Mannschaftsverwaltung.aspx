@@ -39,7 +39,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <h1>Turnierverwaltung</h1>
+        <h1>Mannschaftsverwaltung</h1>
         <div class="border">
             <h3>Mannschaften ausgeben</h3>
             <asp:Table id="tbl_teams" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
