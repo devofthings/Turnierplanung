@@ -92,7 +92,7 @@ namespace Turnierplanung
 
         public bool MannschaftHinzufuegen(Mannschaft m)
         {
-            return DB.FuegeMannschaftHinzu(m.Vorname, m.Geburtstag);
+            return DB.FuegeMannschaftHinzu(m.Vorname);
         }
 
         // TODO: id erhalten
@@ -105,6 +105,16 @@ namespace Turnierplanung
         public bool MannschaftLoeschen(int id)
         {
             return DB.LoescheMannschaft(id);
+        }
+
+        public bool TeilnehmerZuMannschaftHinzufügen(int pID, int mID)
+        {
+            return DB.FuegeTeilnehmerZuMannschaftHinzu(pID, mID);
+        }
+
+        public bool TeilnehmerAusMannschaftEntfernen(int pID, int mID)
+        {
+            return DB.LoescheTeilnehmerAusMannschaft(pID, mID);
         }
 
         #endregion

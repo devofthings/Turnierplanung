@@ -13,11 +13,13 @@ namespace Turnierverwaltung.View
         #region Attributes
         private Controller _control;
         private List<Mannschaft> _teams;
+        private List<Teilnehmer> _teilnehmer;
         #endregion
 
         #region Properties
         public Controller Control { get => _control; set => _control = value; }
         public List<Mannschaft> Teams { get => _teams; set => _teams = value; }
+        public List<Teilnehmer> Teilnehmer { get => _teilnehmer; set => _teilnehmer = value; }
         #endregion
 
         #region Contructors
@@ -25,6 +27,7 @@ namespace Turnierverwaltung.View
         {
             Control = new Controller(Teams, "127.0.0.1", "tournament", "root", "");
             Teams = new List<Mannschaft>();
+            Teilnehmer = new List<Teilnehmer>();
         }
         #endregion
         public void Page_Load(object sender, EventArgs e)
@@ -82,6 +85,41 @@ namespace Turnierverwaltung.View
             int idToDelete = Convert.ToInt32(txt_idToDelete.Text);
             Control.MannschaftLoeschen(idToDelete);
             GetTeams(sender, e);
+        }
+        public void GetParticipants(object sender, EventArgs e)
+        {
+            GetTeams(sender, e);
+            Teilnehmer = Control.AlleTeilnehmerErhalten();
+            foreach (Teilnehmer t in Teilnehmer)
+            {
+                TableRow r = new TableRow();
+                TableCell c0 = new TableCell();
+                TableCell c1 = new TableCell();
+                TableCell c2 = new TableCell();
+                c0.Text = t.ID.ToString();
+                c1.Text = t.Vorname + ' ' + t.Nachname;
+                c2.Text = t.Beruf;
+                r.Cells.Add(c0);
+                r.Cells.Add(c1);
+                r.Cells.Add(c2);
+                tbl_participants.Rows.Add(r);
+            }
+        }
+        public void GetAllParticipantsByTeamID(object sender, EventArgs e)
+        {
+            
+        }
+        public void AddPariticipantToTeam(object sender, EventArgs e)
+        {
+            int participantID = Convert.ToInt32(txt_pIDToAdd.Text);
+            int teamID = Convert.ToInt32(txt_mIDToAdd.Text);
+            Control.TeilnehmerZuMannschaftHinzufügen(participantID, teamID);
+        }
+        public void DeletePariticipantFromTeam(object sender, EventArgs e)
+        {
+            int participantID = Convert.ToInt32(txt_pIDToRemove.Text);
+            int teamID = Convert.ToInt32(txt_mIDToRemove.Text);
+            Control.TeilnehmerAusMannschaftEntfernen(participantID, teamID);
         }
     }
 }

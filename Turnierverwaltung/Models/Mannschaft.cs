@@ -63,7 +63,7 @@ namespace Turnierplanung
 
         public override bool InDatenbankSpeichern(Datenbank db)
         {
-            return db.FuegeMannschaftHinzu("Die Gelben Nasen", "1990-01-01");
+            return db.FuegeMannschaftHinzu("Die Gelben Nasen");
         }
 
         public override bool InDatenbankAendern(Datenbank db)

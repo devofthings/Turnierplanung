@@ -206,7 +206,7 @@ namespace Turnierplanung
             }
         }
 
-        public bool FuegeMannschaftHinzu(string name, string age)
+        public bool FuegeMannschaftHinzu(string name)
         {
             string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
             // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
@@ -271,6 +271,118 @@ namespace Turnierplanung
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
                     cmd.CommandText = $"DELETE FROM teams WHERE id = {id};";
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+
+        /*public List<Teilnehmer> AlleTeilnehmerEinerMannschaftAusgeben(int mannschaftsID)
+        {
+            // TODO: SQL ABfrage basteln die das leisten kann
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = $"SELECT * FROM participant_teams WHERE team_id = {mannschaftsID}";
+                    List<Teilnehmer> tmp = new List<Teilnehmer>();
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        switch (rdr[4])
+                        {
+                            case 1:
+                                // TODO TORE PER INNER JOIN ERHALTEN
+                                tmp.Add(new Fussballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Fußballspieler", rdr[5].ToString(), 1));
+                                break;
+                            case 2:
+                                // TODO Stärke PER INNER JOIN ERHALTEN
+                                tmp.Add(new Tennisspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Tennisspieler", rdr[5].ToString(), 1));
+                                break;
+                            case 3:
+                                // TODO Arm PER INNER JOIN ERHALTEN
+                                tmp.Add(new Handballspieler(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Handballspieler", rdr[5].ToString(), "Links"));
+                                break;
+                            case 4:
+                                // TODO Anzahl PER INNER JOIN ERHALTEN
+                                tmp.Add(new Trainer(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Trainer", rdr[5].ToString(), 1));
+                                break;
+                            case 5:
+                                tmp.Add(new Physiologe(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Physiologe", rdr[5].ToString()));
+                                break;
+                            case 6:
+                                tmp.Add(new Zeugwart(Convert.ToInt32(rdr[0]), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), "Zeugwart", rdr[5].ToString()));
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    return tmp;
+                }
+                catch { }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return null;
+            }
+        }*/
+
+        public bool FuegeTeilnehmerZuMannschaftHinzu(int teilnehmerID, int mannschaftsID)
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "INSERT INTO participants_teams (participant_id, team_id) VALUES (@pID, @mID)";
+                    cmd.Parameters.AddWithValue("@pID", teilnehmerID);
+                    cmd.Parameters.AddWithValue("@mID", mannschaftsID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+
+        public bool LoescheTeilnehmerAusMannschaft(int teilnehmerID, int mannschaftsID)
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = $"DELETE FROM participants_teams WHERE participant_id = {teilnehmerID} AND team_id = {mannschaftsID}";
+                    cmd.Parameters.AddWithValue("@pID", teilnehmerID);
+                    cmd.Parameters.AddWithValue("@mID", mannschaftsID);
                     cmd.ExecuteNonQuery();
                 }
                 catch

@@ -69,6 +69,42 @@
             <asp:TextBox id="txt_idToDelete" placeholder="ID" runat="server"/>
             <asp:Button id="btn_deleteParticipant" text="Teilnehmer löschen" OnClick="DeleteTeam" runat="server" Font-Names="Verdana"/>
         </div>
+        <div class="border">
+            <h3>Teilnehmer ausgeben</h3>
+            <asp:Table id="tbl_participants" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
+                <asp:TableHeaderRow>
+                    <asp:TableHeaderCell>ID</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Name</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Beruf</asp:TableHeaderCell>
+                </asp:TableHeaderRow>
+            </asp:Table>
+            <asp:Button id="btn_getAllParticipants" text="Gebe Alle Teilnehmer aus" OnClick="GetParticipants" runat="server" Font-Names="Verdana"/>
+        </div>
+        <div class="border">
+            <h3>Alle Teilnehmer einer Mannschaft anzeigen</h3>
+            <asp:Table id="Table1" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
+                <asp:TableHeaderRow>
+                    <asp:TableHeaderCell>ID</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Name</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Beruf</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Mannschaft</asp:TableHeaderCell>
+                </asp:TableHeaderRow>
+            </asp:Table>
+            <asp:TextBox id="txt_teamID" placeholder="Mannschafts ID" runat="server"/>
+            <asp:Button id="btn_GetAllParticipantsFromATeam" text="Alle Teammitglieder ausgeben" OnClick="GetAllParticipantsByTeamID" runat="server" Font-Names="Verdana"/>
+        </div>
+        <div class="border">
+            <h3>Teilnehmer zur Mannschaft hinzufügen</h3>
+            <asp:TextBox id="txt_pIDToAdd" placeholder="Teilnehmer ID" runat="server"/>
+            <asp:TextBox id="txt_mIDToAdd" placeholder="Mannschafts ID" runat="server"/>
+            <asp:Button id="btn_addToTeam" text="Füge Teilnhemer zu Team hinzu" OnClick="AddPariticipantToTeam" runat="server" Font-Names="Verdana"/>
+        </div>
+        <div class="border">
+            <h3>Teilnehmer aus Mannschaft entfernen</h3>
+            <asp:TextBox id="txt_pIDToRemove" placeholder="Teilnehmer ID" runat="server"/>
+            <asp:TextBox id="txt_mIDToRemove" placeholder="Mannschafts ID" runat="server"/>
+            <asp:Button id="btn_deleteFromTeam" text="Entferne Teilnhemer aus dem Team" OnClick="DeletePariticipantFromTeam" runat="server" Font-Names="Verdana"/>
+        </div>
     </form>
 </body>
 </html>
