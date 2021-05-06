@@ -82,7 +82,7 @@
         </div>
         <div class="border">
             <h3>Alle Teilnehmer einer Mannschaft anzeigen</h3>
-            <asp:Table id="Table1" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
+            <asp:Table id="tbl_participantsInTeam" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
                 <asp:TableHeaderRow>
                     <asp:TableHeaderCell>ID</asp:TableHeaderCell>
                     <asp:TableHeaderCell>Name</asp:TableHeaderCell>
@@ -90,7 +90,7 @@
                     <asp:TableHeaderCell>Mannschaft</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
             </asp:Table>
-            <asp:TextBox id="txt_teamID" placeholder="Mannschafts ID" runat="server"/>
+            <asp:TextBox id="txt_teamIDToGetParticipants" placeholder="Mannschafts ID" runat="server"/>
             <asp:Button id="btn_GetAllParticipantsFromATeam" text="Alle Teammitglieder ausgeben" OnClick="GetAllParticipantsByTeamID" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">

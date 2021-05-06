@@ -132,22 +132,22 @@ namespace Turnierverwaltung.View
         protected global::System.Web.UI.WebControls.Button btn_getAllParticipants;
 
         /// <summary>
-        /// Table1-Steuerelement
+        /// tbl_participantsInTeam-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::System.Web.UI.WebControls.Table tbl_participantsInTeam;
 
         /// <summary>
-        /// txt_teamID-Steuerelement
+        /// txt_teamIDToGetParticipants-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_teamID;
+        protected global::System.Web.UI.WebControls.TextBox txt_teamIDToGetParticipants;
 
         /// <summary>
         /// btn_GetAllParticipantsFromATeam-Steuerelement

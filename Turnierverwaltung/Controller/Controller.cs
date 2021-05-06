@@ -74,7 +74,6 @@ namespace Turnierplanung
             }
         }
 
-        // TODO: id erhalten
         public bool TeilnehmerAendern(int id, Teilnehmer t)
         {
             return DB.AendereTeilnehmer(id, t.Vorname, t.Nachname, t.Geburtstag, t.GebeJobIdAus(t.Beruf), t.Status);
@@ -95,13 +94,11 @@ namespace Turnierplanung
             return DB.FuegeMannschaftHinzu(m.Vorname);
         }
 
-        // TODO: id erhalten
         public bool MannschaftAendern(int id, Mannschaft m)
         {
             return DB.AendereMannschaft(id, m.Vorname);
         }
 
-        // TODO: id erhalten
         public bool MannschaftLoeschen(int id)
         {
             return DB.LoescheMannschaft(id);
@@ -117,6 +114,10 @@ namespace Turnierplanung
             return DB.LoescheTeilnehmerAusMannschaft(pID, mID);
         }
 
+        public List<Teilnehmer> TeilnehmerEinerMannschaftErhalten(int teamID)
+        {
+            return DB.AlleTeilnehmerEinerMannschaftAusgeben(teamID);
+        }
         #endregion
     }
 }

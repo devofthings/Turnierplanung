@@ -284,9 +284,8 @@ namespace Turnierplanung
             }
         }
 
-        /*public List<Teilnehmer> AlleTeilnehmerEinerMannschaftAusgeben(int mannschaftsID)
+        public List<Teilnehmer> AlleTeilnehmerEinerMannschaftAusgeben(int mannschaftsID)
         {
-            // TODO: SQL ABfrage basteln die das leisten kann
             string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
             // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
             using (MySqlConnection connection = new MySqlConnection(DBConfig))
@@ -296,7 +295,7 @@ namespace Turnierplanung
                     connection.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = $"SELECT * FROM participant_teams WHERE team_id = {mannschaftsID}";
+                    cmd.CommandText = $"SELECT * FROM `participants` AS p INNER JOIN participants_teams pt ON pt.participant_id = p.id INNER JOIN teams t ON pt.team_id = t.id WHERE t.id = {mannschaftsID}";
                     List<Teilnehmer> tmp = new List<Teilnehmer>();
                     MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -338,7 +337,7 @@ namespace Turnierplanung
                 // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
                 return null;
             }
-        }*/
+        }
 
         public bool FuegeTeilnehmerZuMannschaftHinzu(int teilnehmerID, int mannschaftsID)
         {
