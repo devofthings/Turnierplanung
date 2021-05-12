@@ -32,7 +32,6 @@ namespace Turnierverwaltung.View
         #endregion
         public void Page_Load(object sender, EventArgs e)
         {
-            GetTeams(sender, e);
         }
         public void GetTeams(object sender, EventArgs e)
         {
@@ -57,6 +56,7 @@ namespace Turnierverwaltung.View
             int id = Teams.Last().ID + 1;
             Teams.Add(new Mannschaft(id, name));
             Control.MannschaftHinzufuegen(Teams.Last());
+            GetTeams(sender, e);
         }
 
         public void GetTeamByID(object sender, EventArgs e)
@@ -76,12 +76,14 @@ namespace Turnierverwaltung.View
             Mannschaft team = Teams[index];
             team.Vorname = txt_changeTeamName.Text;
             Control.MannschaftAendern(id, team);
+            GetTeams(sender, e);
         }
 
         public void DeleteTeam(object sender, EventArgs e)
         {
             int idToDelete = Convert.ToInt32(txt_idToDelete.Text);
             Control.MannschaftLoeschen(idToDelete);
+            GetTeams(sender, e);
         }
         public void GetParticipants(object sender, EventArgs e)
         {
@@ -104,6 +106,7 @@ namespace Turnierverwaltung.View
         public void GetAllParticipantsByTeamID(object sender, EventArgs e)
         {
             int team_id = Convert.ToInt32(txt_teamIDToGetParticipants.Text);
+            GetTeams(sender, e);
             Teilnehmer = Control.TeilnehmerEinerMannschaftErhalten(team_id);
             foreach (Teilnehmer t in Teilnehmer)
             {
@@ -115,7 +118,7 @@ namespace Turnierverwaltung.View
                 c0.Text = t.ID.ToString();
                 c1.Text = t.Vorname + ' ' + t.Nachname;
                 c2.Text = t.Beruf;
-                c3.Text = Teams[team_id-1].Vorname;
+                c3.Text = Teams[team_id - 1].Vorname;
                 r.Cells.Add(c0);
                 r.Cells.Add(c1);
                 r.Cells.Add(c2);
