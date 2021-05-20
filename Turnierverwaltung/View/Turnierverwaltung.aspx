@@ -58,9 +58,8 @@
         </div>
         <div class="border">
             <h3>Teilnehmer / Mannschaft entfernen</h3>
-            <asp:TextBox id="txt_pIDToRemove" placeholder="Teilnehmer ID" runat="server"/>
-            <asp:TextBox id="txt_mIDToRemove" placeholder="Mannschafts ID" runat="server"/>
-            <asp:Button id="btn_removeFromTournament" text="Füge Teilnhemer oder Team zu Turnier hinzu" OnClick="RemovePariticipantOrTeamToTournament" runat="server" Font-Names="Verdana"/>
+            <asp:TextBox id="txt_IDToRemove" placeholder="Teilnehmer ID" runat="server"/>
+            <asp:Button id="btn_removeFromTournament" text="Füge Teilnhemer oder Team zu Turnier hinzu" OnClick="RemovePariticipantOrTeamFromTournament" runat="server" Font-Names="Verdana"/>
         
         </div>
         <div class="border">

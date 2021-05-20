@@ -67,22 +67,13 @@ namespace Turnierverwaltung.View {
         protected global::System.Web.UI.WebControls.Button btn_addToTournament;
         
         /// <summary>
-        /// txt_pIDToRemove-Steuerelement
+        /// txt_IDToRemove-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_pIDToRemove;
-        
-        /// <summary>
-        /// txt_mIDToRemove-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_mIDToRemove;
+        protected global::System.Web.UI.WebControls.TextBox txt_IDToRemove;
         
         /// <summary>
         /// btn_removeFromTournament-Steuerelement

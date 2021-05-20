@@ -68,6 +68,22 @@ namespace Turnierverwaltung.View
             }
         }
 
+        public void GetParticipantsAndTeamsInTournament(object sender, EventArgs e)
+        {
+            int indexID = 1;
+            foreach (Teilnehmer t in Tournament)
+            {
+                TableRow r = new TableRow();
+                TableCell c0 = new TableCell();
+                TableCell c1 = new TableCell();
+                c0.Text = Convert.ToString(indexID);
+                c1.Text = t.Vorname;
+                r.Cells.Add(c1);
+                tbl_participantsANDteams.Rows.Add(r);
+                indexID += 1;
+            }
+        }
+
 
         public void AddPariticipantOrTeamToTournament(object sender, EventArgs e)
         {
@@ -93,17 +109,16 @@ namespace Turnierverwaltung.View
                 }
                 else { }
             }
+
+            GetParticipantsAndTeamsInTournament(sender, e);
         }
 
-        public void RemovePariticipantOrTeamToTournament(object sender, EventArgs e)
+        public void RemovePariticipantOrTeamFromTournament(object sender, EventArgs e)
         {
-            GetParticipantsAndTeams(sender, e);
+            int idToRemove = Convert.ToInt32(txt_IDToRemove.Text);
+            Tournament.RemoveAt(idToRemove - 1);
+            GetParticipantsAndTeamsInTournament(sender, e);
 
-            // TODO Checken was passiert wenn kein Eingabewert eingegeben wird
-            int tIDtoRemove = Convert.ToInt32(txt_pIDToAdd);
-            int mIDtoRemove = Convert.ToInt32(txt_mIDToAdd);
-
-           
         }
 
         public void runTournament(object sender, EventArgs e)
