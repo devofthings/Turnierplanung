@@ -69,12 +69,17 @@
                     <asp:TableHeaderCell>Name</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
             </asp:Table>
-            <asp:Button ID="btn_getTorunamentParticipants" text="Gebe AlleTeilnehmer und Mannschaften aus" OnClick="GetTournamentParticipants" runat="server" Font-Names="Verdana"/>
+            <asp:Button ID="btn_getTorunamentParticipants" text="Gebe AlleTeilnehmer und Mannschaften aus" OnClick="GetParticipantsAndTeamsInTournament" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">
             <h3>Turnier durchführen</h3>
-            <asp:TextBox id="txt_amountOfGames" placeholder="Anzahl Spiele" runat="server"/>
             <asp:Button id="btn_playTournament" text="Turnier durchführen" OnClick="runTournament" runat="server" Font-Names="Verdana"/>
+            <asp:Table id="tbl_ranking" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
+                <asp:TableHeaderRow>
+                    <asp:TableHeaderCell>Name</asp:TableHeaderCell>
+                    <asp:TableHeaderCell>Punkte</asp:TableHeaderCell>
+                </asp:TableHeaderRow>
+            </asp:Table>
         </div>
     </form>
 </body>

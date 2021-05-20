@@ -126,12 +126,37 @@ namespace Turnierverwaltung.View
         public void runTournament(object sender, EventArgs e)
         {
             GetParticipantsAndTeamsInTournament(sender, e);
-            int amountOfGames = Convert.ToInt32(txt_amountOfGames.Text);
-            for (int index = 0; index < amountOfGames; index += 1)
+            int index = 1;
+
+            // TODO Rückspiele ermöglichen
+
+            foreach (Teilnehmer t in Tournament)
             {
-                Spiele.Add(new Spiel(Tournament, 3));
-                Spiele[index].ErmittleSieger();
+                if(index < Tournament.Count)
+                {
+                    List<Teilnehmer> match = new List<Teilnehmer>();
+                    match.Add(t);
+                    match.Add(Tournament.ElementAt(index));
+                    index += 1;
+                    Spiele.Add(new Spiel(match));
+                }
+                else { }
             }
+
+            foreach (Spiel s in Spiele)
+            {
+                s.ErmittleSieger();
+            }
+
+
+            // TODO Tabelle berechnen und anzeigen
+
+                // TODO finde alle Sieger
+                // Anzahl gewonnene SPiele mal Punkte von Spiel
+                // Absteigend sortieren
+                // Tabelle darstellen
+                
+
         }
     }
 }

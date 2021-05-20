@@ -103,15 +103,6 @@ namespace Turnierverwaltung.View {
         protected global::System.Web.UI.WebControls.Button btn_getTorunamentParticipants;
         
         /// <summary>
-        /// txt_amountOfGames-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_amountOfGames;
-        
-        /// <summary>
         /// btn_playTournament-Steuerelement
         /// </summary>
         /// <remarks>
@@ -119,5 +110,14 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_playTournament;
+        
+        /// <summary>
+        /// tbl_ranking-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tbl_ranking;
     }
 }
