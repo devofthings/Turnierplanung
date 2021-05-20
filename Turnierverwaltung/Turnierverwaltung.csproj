@@ -222,6 +222,7 @@
     </Compile>
     <Compile Include="main.cs" />
     <Compile Include="Models\Mannschaft.cs" />
+    <Compile Include="Models\Spiel.cs" />
     <Compile Include="Models\Spieler.cs" />
     <Compile Include="Models\Spieler\Fussballspieler.cs" />
     <Compile Include="Models\Spieler\Handballspieler.cs" />

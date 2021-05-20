@@ -73,7 +73,7 @@
         </div>
         <div class="border">
             <h3>Turnier durchführen</h3>
-            <asp:TextBox id="amountOfGames" placeholder="Anzahl Spiele" runat="server"/>
+            <asp:TextBox id="txt_amountOfGames" placeholder="Anzahl Spiele" runat="server"/>
             <asp:Button id="btn_playTournament" text="Turnier durchführen" OnClick="runTournament" runat="server" Font-Names="Verdana"/>
         </div>
     </form>

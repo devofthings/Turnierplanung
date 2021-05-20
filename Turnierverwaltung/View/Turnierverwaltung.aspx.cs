@@ -15,6 +15,7 @@ namespace Turnierverwaltung.View
         private List<Mannschaft> _teams;
         private List<Teilnehmer> _tournament;
         private Controller _control;
+        private List<Spiel> _spiele;
         #endregion
 
         #region Properties
@@ -22,6 +23,7 @@ namespace Turnierverwaltung.View
         public List<Mannschaft> Teams { get => _teams; set => _teams = value; }
         public Controller Control { get => _control; set => _control = value; }
         public List<Teilnehmer> Tournament { get => _tournament; set => _tournament = value; }
+        public List<Spiel> Spiele { get => _spiele; set => _spiele = value; }
         #endregion
 
         #region Constructors
@@ -123,8 +125,13 @@ namespace Turnierverwaltung.View
 
         public void runTournament(object sender, EventArgs e)
         {
-            Teilnehmer = Control.AlleTeilnehmerErhalten();
-            Teams = Control.AlleMannschaftenErhalten();
+            GetParticipantsAndTeamsInTournament(sender, e);
+            int amountOfGames = Convert.ToInt32(txt_amountOfGames.Text);
+            for (int index = 0; index < amountOfGames; index += 1)
+            {
+                Spiele.Add(new Spiel(Tournament, 3));
+                Spiele[index].ErmittleSieger();
+            }
         }
     }
 }
