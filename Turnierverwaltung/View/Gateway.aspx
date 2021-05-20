@@ -12,6 +12,7 @@
         <div>
             <asp:Button ID="btn_goToParticipants" Text="Zur Teilnehmerverwaltung" OnClick="btn_goToParticipants_Click" runat="server" />
             <asp:Button ID="btn_goToTeams" Text="Zur Teamverwaltung" OnClick="btn_goToTeams_Click" runat="server" />
+            <asp:Button ID="btn_goToTurnament" Text="Zur Turnierverwaltung" OnClick="btn_goToTournament_Click" runat="server" />
         </div>
     </form>
 </body>

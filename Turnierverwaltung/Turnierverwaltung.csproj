@@ -207,6 +207,7 @@
     <Content Include="View\Gateway.aspx" />
     <Content Include="View\Mannschaftsverwaltung.aspx" />
     <Content Include="View\Teilnehmerverwaltung.aspx" />
+    <Content Include="View\Turnierverwaltung.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="View\Teilnehmerverwaltung.aspx.designer.cs">
       <DependentUpon>Teilnehmerverwaltung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Turnierverwaltung.aspx.cs">
+      <DependentUpon>Turnierverwaltung.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Turnierverwaltung.aspx.designer.cs">
+      <DependentUpon>Turnierverwaltung.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\View.cs" />
   </ItemGroup>

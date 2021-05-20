@@ -23,5 +23,10 @@ namespace Turnierverwaltung.View
         {
             Response.Redirect("Mannschaftsverwaltung");
         }
+
+        protected void btn_goToTournament_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Turnierverwaltung");
+        }
     }
 }
