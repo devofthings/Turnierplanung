@@ -1,4 +1,4 @@
 # Turnierplanung
 
-Dieses Projekt ermöglicht eine Turnierplanung in der Kommandozeile.   
-Es wurde in C# geschrieben und dient als Übung für Vererbung (Generalisierung) in C#.   
+Dieses Projekt ermöglicht eine Teilnehmer-, Mannschafts und Turnierverwaltung via Browser.
+Geschrieben wurde es in C# mit asp.Net 
