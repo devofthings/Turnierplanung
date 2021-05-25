@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,14 +17,17 @@ namespace Turnierverwaltung.View
         private List<Teilnehmer> _tournament;
         private Controller _control;
         private List<Spiel> _spiele;
+        private List<Teilnehmer> _sieger;
         #endregion
 
         #region Properties
         public List<Teilnehmer> Teilnehmer { get => _teilnehmer; set => _teilnehmer = value; }
         public List<Mannschaft> Teams { get => _teams; set => _teams = value; }
-        public Controller Control { get => _control; set => _control = value; }
         public List<Teilnehmer> Tournament { get => _tournament; set => _tournament = value; }
+
+        public Controller Control { get => _control; set => _control = value; }
         public List<Spiel> Spiele { get => _spiele; set => _spiele = value; }
+        public List<Teilnehmer> Sieger { get => _sieger; set => _sieger = value; }
         #endregion
 
         #region Constructors
@@ -32,11 +36,13 @@ namespace Turnierverwaltung.View
             Control = new Controller(Teams, "127.0.0.1", "tournament", "root", "");
             Teams = new List<Mannschaft>();
             Teilnehmer = new List<Teilnehmer>();
+            Tournament = new List<Teilnehmer>();
+            Spiele = new List<Spiel>();
+            Sieger = new List<Teilnehmer>();
         }
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         public void GetParticipantsAndTeams (object sender, EventArgs e)
@@ -72,7 +78,8 @@ namespace Turnierverwaltung.View
 
         public void GetParticipantsAndTeamsInTournament(object sender, EventArgs e)
         {
-            int indexID = 1;
+            Tournament = Control.TurnierbeteiligtenErhalten();
+            int indexID = 0;
             foreach (Teilnehmer t in Tournament)
             {
                 TableRow r = new TableRow();
@@ -81,7 +88,7 @@ namespace Turnierverwaltung.View
                 c0.Text = Convert.ToString(indexID);
                 c1.Text = t.Vorname;
                 r.Cells.Add(c1);
-                tbl_participantsANDteams.Rows.Add(r);
+                tbl_tournamentParticipants.Rows.Add(r);
                 indexID += 1;
             }
         }
@@ -92,35 +99,45 @@ namespace Turnierverwaltung.View
             GetParticipantsAndTeams(sender, e);
 
             // TODO Checken was passiert wenn kein Eingabewert eingegeben wird
-            int tIDtoAdd = Convert.ToInt32(txt_pIDToAdd);
-            int mIDtoAdd = Convert.ToInt32(txt_mIDToAdd);
+            int IDtoAdd = Convert.ToInt32(txt_IDToAdd.Text);
 
             Table table = tbl_participantsANDteams;
-            for(int trIndex = 0; trIndex < table.Rows.Count; trIndex += 1)
+            for(int trIndex = 1; trIndex < table.Rows.Count; trIndex += 1)
             {
-                // Prüfe jede Tabellenzeile die 1 Zelle ob diese mit tID übereinstimmt
-                if(Convert.ToInt32(table.Rows[trIndex].Cells[1].Text) == tIDtoAdd)
+                // Prüfe jede Tabellenzeile die 1 Zelle ob diese mit ID übereinstimmt
+                if(Convert.ToInt32(table.Rows[trIndex].Cells[0].Text) == IDtoAdd)
                 {
-                    Tournament.Add(Teilnehmer[tIDtoAdd]);
-                }
-                // Prüfe jede Tabellenzeile die 1 Zelle ob diese mit mID übereinstimmt
-                else if (Convert.ToInt32(table.Rows[trIndex].Cells[1].Text) == mIDtoAdd)
-                {
-                    int neueID = mIDtoAdd - Teilnehmer.Last().ID;
-                    Tournament.Add(Teams[mIDtoAdd]);
+                    if(IDtoAdd > Teilnehmer.Count)
+                    {
+                        int berechneteTeamID = IDtoAdd - Teilnehmer.Count - 1; //-1 um den intialen index zu entfernen der bei der tabelle hinzugefügt wurde
+                        Tournament.Add(Teams[berechneteTeamID]);
+                        Control.TurniermannschaftHinzufuegen(Tournament.Last());
+                    }
+                    else
+                    {
+                        Tournament.Add(Teilnehmer[IDtoAdd -1]);
+                        Control.TurnierteilnehmerHinzufuegen(Tournament.Last());
+                    }
                 }
                 else { }
             }
-
             GetParticipantsAndTeamsInTournament(sender, e);
         }
 
         public void RemovePariticipantOrTeamFromTournament(object sender, EventArgs e)
         {
+            GetParticipantsAndTeams(sender, e);
             int idToRemove = Convert.ToInt32(txt_IDToRemove.Text);
-            Tournament.RemoveAt(idToRemove - 1);
+            if (idToRemove > Teilnehmer.Count)
+            {
+                int berechneteTeamID = idToRemove - Teilnehmer.Count;
+                Control.TurniermannschaftEntfernen(berechneteTeamID);
+            }
+            else
+            {
+                Control.TurnierteilnehmerEntfernen(idToRemove);
+            }
             GetParticipantsAndTeamsInTournament(sender, e);
-
         }
 
         public void runTournament(object sender, EventArgs e)
@@ -146,16 +163,40 @@ namespace Turnierverwaltung.View
             foreach (Spiel s in Spiele)
             {
                 s.ErmittleSieger();
+                if(Sieger.Contains(s.Sieger))
+                {
+                    int i = Sieger.FindIndex(x => x.Vorname == s.Sieger.Vorname && x.ID == s.Sieger.ID);
+                    Sieger[i].Punkte += s.Punkte;
+                }
+                else
+                {
+                    Sieger.Add(s.Sieger);
+                    Sieger.Last().Punkte += s.Punkte;
+                }
+            }
+
+            foreach (Spiel s in Spiele)
+            {
+                Debug.WriteLine(s.Sieger.Vorname);
+                Debug.WriteLine(s.Sieger.Punkte);
+            }
+
+            foreach (Teilnehmer t in Sieger)
+            {
+                TableRow r = new TableRow();
+                TableCell c0 = new TableCell();
+                TableCell c1 = new TableCell();
+                c0.Text = t.Vorname;
+                c1.Text = t.Punkte;
+                r.Cells.Add(c0);
+                r.Cells.Add(c1);
+                tbl_ranking.Rows.Add(r);
             }
 
 
-            // TODO Tabelle berechnen und anzeigen
+            // TODO 
+            // Absteigend sortieren
 
-                // TODO finde alle Sieger
-                // Anzahl gewonnene SPiele mal Punkte von Spiel
-                // Absteigend sortieren
-                // Tabelle darstellen
-                
 
         }
     }

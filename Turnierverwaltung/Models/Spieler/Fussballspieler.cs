@@ -16,6 +16,16 @@ namespace Turnierplanung
         #endregion
 
         #region Konstruktoren
+        public Fussballspieler(int id, string name) : base()
+        {
+            ID = id;
+            Vorname = name;
+            Nachname = "Mustermann";
+            Geburtstag = "1900-01-01";
+            Beruf = "Fußballspieler";
+            Status = "Gesund";
+            GeschosseneTore = 0;
+        }
         public Fussballspieler() : base()
         {
             ID = 0;

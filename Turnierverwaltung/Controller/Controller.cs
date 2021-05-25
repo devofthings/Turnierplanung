@@ -8,6 +8,7 @@ namespace Turnierplanung
         #region Attribute
         private List<Teilnehmer> _teilnehmer;
         private List<Mannschaft> _mannschaften;
+        private List<Teilnehmer> _tournament;
         private Datenbank _db;
         #endregion
 
@@ -15,6 +16,7 @@ namespace Turnierplanung
         public List<Teilnehmer> Teilnehmer { get => _teilnehmer; set => _teilnehmer = value; }
         public List<Mannschaft> Mannschaften { get => _mannschaften; set => _mannschaften = value; }
         public Datenbank DB { get => _db; set => _db = value; }
+        public List<Teilnehmer> Tournament { get => _tournament; set => _tournament = value; }
         #endregion
 
         #region Konstruktoren
@@ -22,23 +24,29 @@ namespace Turnierplanung
         {
             Teilnehmer = new List<Teilnehmer>();
             Mannschaften = new List<Mannschaft>();
-            DB = new Datenbank("127.0.0.1", "tournament", "root", "");
+            Tournament = new List<Teilnehmer>();
+            DB = new Datenbank("127.0.0.1", "tournament", "jobs_read", "1234");
         }
         public Controller(List<Teilnehmer> teilnehmer, List<Mannschaft> mannschaften, string ip, string db, string user, string password)
         {
             Teilnehmer = teilnehmer;
             Mannschaften = mannschaften;
+            Tournament = new List<Teilnehmer>();
+
             DB = new Datenbank(ip, db, user, password);
         }
 
         public Controller(List<Teilnehmer> teilnehmer, string ip, string db, string user, string password)
         {
             Teilnehmer = teilnehmer;
+            Tournament = new List<Teilnehmer>();
+
             DB = new Datenbank(ip, db, user, password);
         }
         public Controller(List<Mannschaft> mannschaften, string ip, string db, string user, string password)
         {
             Mannschaften = mannschaften;
+            Tournament = new List<Teilnehmer>();
             DB = new Datenbank(ip, db, user, password);
         }
         #endregion
@@ -117,6 +125,32 @@ namespace Turnierplanung
         public List<Teilnehmer> TeilnehmerEinerMannschaftErhalten(int teamID)
         {
             return DB.AlleTeilnehmerEinerMannschaftAusgeben(teamID);
+        }
+
+        public void TurnierteilnehmerHinzufuegen(Teilnehmer t)
+        {
+            DB.FuegeTeilnehmerZuTurnierHinzu(t.ID);
+        }
+        public void TurnierteilnehmerEntfernen(int t)
+        {
+            DB.LoescheTeilnehmerAusTurnier(t);
+        }
+        public void TurniermannschaftHinzufuegen(Teilnehmer m)
+        {
+            DB.FuegeMannschaftZuTurnierHinzu(m.ID);
+        }
+        public void TurniermannschaftEntfernen(int m)
+        {
+            DB.LoescheMannschaftAusTurnier(m);
+        }
+        public List<Teilnehmer> TurnierbeteiligtenErhalten()
+        {
+            List<Teilnehmer> tmpT = new List<Teilnehmer>();
+            tmpT = DB.AlleBeteiligtenTeilnehmerImTurnierErhalten();
+            List<Teilnehmer> tmpM = new List<Teilnehmer>();
+            tmpM = DB.AlleBeteiligtenTeamsImTurnierErhalten();
+            tmpT.AddRange(tmpM);
+            return tmpT;
         }
         #endregion
     }

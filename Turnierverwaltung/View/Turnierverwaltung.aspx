@@ -52,24 +52,23 @@
         </div>
         <div class="border">
             <h3>Teilnehmer / Mannschaft hinzufügen</h3>
-            <asp:TextBox id="txt_pIDToAdd" placeholder="Teilnehmer ID" runat="server"/>
-            <asp:TextBox id="txt_mIDToAdd" placeholder="Mannschafts ID" runat="server"/>
-            <asp:Button id="btn_addToTournament" text="Füge Teilnhemer oder Team zu Turnier hinzu" OnClick="AddPariticipantOrTeamToTournament" runat="server" Font-Names="Verdana"/>
+            <asp:TextBox id="txt_IDToAdd" placeholder="Teilnehmer ID" runat="server"/>
+            <asp:Button id="btn_addToTournament" text="Füge Teilnehmer oder Team zu Turnier hinzu" OnClick="AddPariticipantOrTeamToTournament" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">
             <h3>Teilnehmer / Mannschaft entfernen</h3>
             <asp:TextBox id="txt_IDToRemove" placeholder="Teilnehmer ID" runat="server"/>
-            <asp:Button id="btn_removeFromTournament" text="Füge Teilnhemer oder Team zu Turnier hinzu" OnClick="RemovePariticipantOrTeamFromTournament" runat="server" Font-Names="Verdana"/>
+            <asp:Button id="btn_removeFromTournament" text="Entferne Teilnehmer oder Team vom Turnier" OnClick="RemovePariticipantOrTeamFromTournament" runat="server" Font-Names="Verdana"/>
         
         </div>
         <div class="border">
             <h3>Turnierteilnehmer anzeigen</h3>
-            <asp:Table id="Table1" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
+            <asp:Table id="tbl_tournamentParticipants" runat="server" GridLines="Both" CellPadding="15" CellSpacing="0">
                 <asp:TableHeaderRow>
                     <asp:TableHeaderCell>Name</asp:TableHeaderCell>
                 </asp:TableHeaderRow>
             </asp:Table>
-            <asp:Button ID="btn_getTorunamentParticipants" text="Gebe AlleTeilnehmer und Mannschaften aus" OnClick="GetParticipantsAndTeamsInTournament" runat="server" Font-Names="Verdana"/>
+            <asp:Button ID="btn_getTorunamentParticipants" text="Gebe Alle Teilnehmer und Mannschaften aus" OnClick="GetParticipantsAndTeamsInTournament" runat="server" Font-Names="Verdana"/>
         </div>
         <div class="border">
             <h3>Turnier durchführen</h3>

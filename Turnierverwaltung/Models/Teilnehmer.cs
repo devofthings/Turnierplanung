@@ -9,6 +9,7 @@ namespace Turnierplanung
         private string _alter;
         private string _beruf;
         private string _status;
+        private string _punkte;
         #endregion
 
         #region Propertys
@@ -19,6 +20,7 @@ namespace Turnierplanung
         public string Beruf { get => _beruf; set => _beruf = value; }
         public string Status { get => _status; set => _status = value; }
         public string Name { get; }
+        public string Punkte { get => _punkte; set => _punkte = value; }
         #endregion
 
         #region Konstruktoren
@@ -47,7 +49,7 @@ namespace Turnierplanung
             Vorname = name;
         }
 
-        protected Teilnehmer(string name)
+        public Teilnehmer(string name)
         {
             Name = name;
         }

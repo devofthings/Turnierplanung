@@ -515,6 +515,171 @@ namespace Turnierplanung
                 return true;
             }
         }
+
+        public bool FuegeTeilnehmerZuTurnierHinzu(int teilnehmerID)
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "INSERT INTO tournament_participants (participant_id) VALUES (@pID)";
+                    cmd.Parameters.AddWithValue("@pID", teilnehmerID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+
+        public bool FuegeMannschaftZuTurnierHinzu(int mannschaftsID)
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "INSERT INTO tournament_participants (team_id) VALUES (@mID)";
+                    cmd.Parameters.AddWithValue("@mID", mannschaftsID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+
+        public bool LoescheTeilnehmerAusTurnier(int teilnehmerID)
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = $"DELETE FROM tournament_participants WHERE participant_id = {teilnehmerID}";
+                    cmd.Parameters.AddWithValue("@pID", teilnehmerID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+        public bool LoescheMannschaftAusTurnier(int mannschaftsID)
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = $"DELETE FROM tournament_participants WHERE team_id = {mannschaftsID}";
+                    cmd.Parameters.AddWithValue("@mID", mannschaftsID);
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return true;
+            }
+        }
+
+        public List<Teilnehmer> AlleBeteiligtenTeamsImTurnierErhalten()
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = $"SELECT * FROM `teams` AS t INNER JOIN tournament_participants AS tpt ON tpt.team_id = t.id";
+                    List<Teilnehmer> tmp = new List<Teilnehmer>();
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        tmp.Add(new Fussballspieler(Convert.ToInt32(rdr[4]), rdr[1].ToString()));
+                    }
+                    return tmp;
+                }
+                catch { }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return null;
+            }
+        }
+
+        public List<Teilnehmer> AlleBeteiligtenTeilnehmerImTurnierErhalten()
+        {
+            string DBConfig = $"server={Server};user={User};database={DB};password={Password}";
+            // using --> ruft automatisch .Dispose() auf sobald, der Block verlassen wird. 
+            using (MySqlConnection connection = new MySqlConnection(DBConfig))
+            {
+                try
+                {
+                    connection.Open();
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = $"SELECT* FROM `participants` AS p INNER JOIN tournament_participants AS tpt ON tpt.participant_id = p.id";
+                    List<Teilnehmer> tmp = new List<Teilnehmer>();
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        tmp.Add(new Fussballspieler(Convert.ToInt32(rdr[7]), rdr[2].ToString()));
+                    }
+                    return tmp;
+                }
+                catch { }
+
+                connection.Close();
+                // connection.Dispose(); "Räum auf Befehl" für die Klasse - Nachdem es nicht mehr genutzt werden soll
+                return null;
+            }
+        }
         #endregion
 
     }

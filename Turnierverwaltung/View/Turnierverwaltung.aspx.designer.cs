@@ -7,11 +7,13 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace Turnierverwaltung.View {
-    
-    
-    public partial class Turnierverwaltung {
-        
+namespace Turnierverwaltung.View
+{
+
+
+    public partial class Turnierverwaltung
+    {
+
         /// <summary>
         /// form1-Steuerelement
         /// </summary>
@@ -20,7 +22,7 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// tbl_participantsANDteams-Steuerelement
         /// </summary>
@@ -29,7 +31,7 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tbl_participantsANDteams;
-        
+
         /// <summary>
         /// btn_getAllParticipantsAndTeams-Steuerelement
         /// </summary>
@@ -38,25 +40,16 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_getAllParticipantsAndTeams;
-        
+
         /// <summary>
-        /// txt_pIDToAdd-Steuerelement
+        /// txt_IDToAdd-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_pIDToAdd;
-        
-        /// <summary>
-        /// txt_mIDToAdd-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_mIDToAdd;
-        
+        protected global::System.Web.UI.WebControls.TextBox txt_IDToAdd;
+
         /// <summary>
         /// btn_addToTournament-Steuerelement
         /// </summary>
@@ -65,7 +58,7 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_addToTournament;
-        
+
         /// <summary>
         /// txt_IDToRemove-Steuerelement
         /// </summary>
@@ -74,7 +67,7 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_IDToRemove;
-        
+
         /// <summary>
         /// btn_removeFromTournament-Steuerelement
         /// </summary>
@@ -83,16 +76,16 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_removeFromTournament;
-        
+
         /// <summary>
-        /// Table1-Steuerelement
+        /// tbl_tournamentParticipants-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
-        
+        protected global::System.Web.UI.WebControls.Table tbl_tournamentParticipants;
+
         /// <summary>
         /// btn_getTorunamentParticipants-Steuerelement
         /// </summary>
@@ -101,7 +94,7 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_getTorunamentParticipants;
-        
+
         /// <summary>
         /// btn_playTournament-Steuerelement
         /// </summary>
@@ -110,7 +103,7 @@ namespace Turnierverwaltung.View {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_playTournament;
-        
+
         /// <summary>
         /// tbl_ranking-Steuerelement
         /// </summary>

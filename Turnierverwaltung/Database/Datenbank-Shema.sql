@@ -50,3 +50,10 @@ CREATE TABLE tournament.participants_teams (
     team_id INT(11) NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE tournament.tournament_participants (
+    id INT NOT NULL AUTO_INCREMENT,
+    participant_id INT(11),
+    team_id INT(11),
+    PRIMARY KEY (id)
+);
