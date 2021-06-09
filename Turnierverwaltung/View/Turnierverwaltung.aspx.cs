@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Turnierplanung;
+using System.Linq;
+
 
 namespace Turnierverwaltung.View
 {
@@ -186,6 +186,8 @@ namespace Turnierverwaltung.View
                 Debug.WriteLine(s.Sieger.Punkte);
             }
 
+
+            Sieger = Sieger.OrderBy(s => s.Punkte).ToList();
             foreach (Teilnehmer t in Sieger)
             {
                 TableRow r = new TableRow();
@@ -197,12 +199,6 @@ namespace Turnierverwaltung.View
                 r.Cells.Add(c1);
                 tbl_ranking.Rows.Add(r);
             }
-
-
-            // TODO 
-            // Absteigend sortieren
-
-
         }
     }
 }
