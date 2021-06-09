@@ -1,3 +1,9 @@
+/* Datei: Teilnehmer.cs
+ * Was passiert hier?: Stellt dem Programm die Abstrkate Klasse Teilnehemr zur verfügung
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
 namespace Turnierplanung
 {
     public abstract class Teilnehmer

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Datei: Zeugwart.cs
+ * Was passiert hier?: Erlaubt das erstellen von Zeugwärten
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+using System;
 using MySql.Data.MySqlClient;
 
 namespace Turnierplanung

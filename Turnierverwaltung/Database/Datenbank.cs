@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Datei: Datenbank.cs
+ * Was passiert hier?: Stellt alle Datenbankfunktionen zur verfügung
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 

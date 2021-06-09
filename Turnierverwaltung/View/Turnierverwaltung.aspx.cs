@@ -1,10 +1,16 @@
-﻿using System;
+﻿/* Datei: Turnierverwaltung.aspx.cs
+ * Was passiert hier?: Erlaubt das planen und durchführen von Turnieren
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web.UI.WebControls;
 using Turnierplanung;
-using System.Linq;
 
 
 namespace Turnierverwaltung.View
@@ -98,7 +104,6 @@ namespace Turnierverwaltung.View
         {
             GetParticipantsAndTeams(sender, e);
 
-            // TODO Checken was passiert wenn kein Eingabewert eingegeben wird
             int IDtoAdd = Convert.ToInt32(txt_IDToAdd.Text);
 
             Table table = tbl_participantsANDteams;

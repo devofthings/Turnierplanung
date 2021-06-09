@@ -1,9 +1,13 @@
-﻿using System;
+﻿/* Datei: Teilnehmerverwaltung.aspx.cs
+ * Was passiert hier?: Erlaubt einen Benutzer das anlegen, editieren und löschen von turnierteilnehmern
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Turnierplanung;
 

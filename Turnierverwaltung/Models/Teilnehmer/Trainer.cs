@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Datei: Trainer.cs
+ * Was passiert hier?: Erlaubt das erstellen von Trainern
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+using System;
 using MySql.Data.MySqlClient;
 
 namespace Turnierplanung

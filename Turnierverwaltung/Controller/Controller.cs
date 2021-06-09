@@ -1,4 +1,9 @@
-using System;
+/* Datei: Controller.cs
+ * Was passiert hier?: Kontrolliert den Anwendungsfluss und stellt dem Nutzer funktionen zur Verfügung
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
 using System.Collections.Generic;
 
 namespace Turnierplanung

@@ -1,4 +1,9 @@
-﻿
+﻿/* Datei: Physiologe.cs
+ * Was passiert hier?: Erlaubt das erstellen von Physiologen
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
 namespace Turnierplanung
 {
     public class Physiologe : Teilnehmer

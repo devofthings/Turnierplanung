@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿/* Datei: Fussballspieler.cs
+ * Was passiert hier?: Erlaubt das erstellen von Fussballspielern aus der abstrakten Klasse Spieler
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Turnierplanung

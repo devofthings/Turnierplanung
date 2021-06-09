@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Datei: Gateway.aspx.cs
+ * Was passiert hier?: 1. Seite der Anwendung, fungiert als Hub um zu den Verwaltungen zu gelangen 
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

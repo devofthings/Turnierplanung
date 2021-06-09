@@ -1,4 +1,10 @@
-﻿namespace Turnierplanung
+﻿/* Datei: Handballspieler.cs
+ * Was passiert hier?: Erlaubt das erstellen von Handballspielern aus der abstrakten Klasse Spieler
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+namespace Turnierplanung
 {
     public class Handballspieler : Spieler
     {

@@ -1,7 +1,12 @@
-﻿using System;
+﻿/* Datei: Spiel.cs
+ * Was passiert hier?: Ermöglicht das erstelle nvon Spielen für die Turnierverwaltung
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 
 namespace Turnierplanung
 {

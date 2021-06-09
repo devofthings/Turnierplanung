@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* Datei: Spieler.cs
+ * Was passiert hier?: Leitet abstrakte Klasse Spieler von Teilnehmer ab
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
 
 namespace Turnierplanung
 {

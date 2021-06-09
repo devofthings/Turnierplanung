@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿/* Datei: Mannschaft.cs
+ * Was passiert hier?: Erlaubt das Erstellen von Mannschaften
+ * Author: Christopher Winter
+ * Klasse: IA119
+ */
+
+using System.Collections.Generic;
 
 namespace Turnierplanung
 {
