@@ -145,17 +145,22 @@ namespace Turnierverwaltung.View
             GetParticipantsAndTeamsInTournament(sender, e);
             int index = 1;
 
-            // TODO Rückspiele ermöglichen
-
             foreach (Teilnehmer t in Tournament)
             {
                 if(index < Tournament.Count)
                 {
-                    List<Teilnehmer> match = new List<Teilnehmer>();
-                    match.Add(t);
-                    match.Add(Tournament.ElementAt(index));
+                    List<Teilnehmer> hinspiel = new List<Teilnehmer>();
+                    List<Teilnehmer> rueckspiel = new List<Teilnehmer>();
+
+                    hinspiel.Add(t);
+                    hinspiel.Add(Tournament.ElementAt(index));
+                    rueckspiel.Add(t);
+                    rueckspiel.Add(Tournament.ElementAt(index));
+
+                    Spiele.Add(new Spiel(hinspiel));
+                    Spiele.Add(new Spiel(rueckspiel));
+
                     index += 1;
-                    Spiele.Add(new Spiel(match));
                 }
                 else { }
             }
